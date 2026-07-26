@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>About — TX Operations 株式会社</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Michroma&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0A0A0A; --fg:#FFFFFF; --fg-dim:#9A9A9A; --fg-faint:#4A4A4A; --accent:#E8B22B;}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased; scroll-behavior:smooth}
+body{background:var(--bg); color:var(--fg); font-family:"Inter","Noto Sans JP",system-ui,sans-serif; font-feature-settings:"palt" 1}
+a{color:inherit; text-decoration:none}
+img{display:block}
+
+/* ===== NAV ===== */
+.nav{position:fixed; top:0; left:0; right:0; z-index:50; display:flex; align-items:center; justify-content:space-between;
+  padding:22px clamp(24px,5vw,80px); background:rgba(10,10,10,.7); backdrop-filter:blur(12px);}
+.nav .logo img{height:clamp(30px,3vw,46px); width:auto; display:block}
+.nav-right{display:flex; align-items:center; gap:clamp(20px,3vw,40px)}
+.nav-about{font-size:13px; font-weight:700; letter-spacing:.14em; color:#EDEDED}
+.btn-apply{display:inline-flex; align-items:center; gap:8px; padding:11px 22px; background:var(--accent); color:#0A0A0A;
+  font-size:12px; font-weight:700; letter-spacing:.08em; border-radius:3px; transition:transform .25s, box-shadow .25s}
+.btn-apply:hover{transform:translateY(-2px); box-shadow:0 10px 26px -8px rgba(232,178,43,.5)}
+
+/* ===== 本体 ===== */
+.wrap{position:relative; max-width:1180px; margin:0 auto; padding:clamp(130px,15vh,190px) clamp(24px,5vw,80px) clamp(80px,10vw,140px); overflow:hidden}
+.ghost-word{position:absolute; right:-2%; bottom:6%; font-size:clamp(120px,20vw,300px); font-weight:900; letter-spacing:.05em;
+  color:rgba(255,255,255,.035); white-space:nowrap; pointer-events:none; user-select:none; z-index:0}
+.head{position:relative; z-index:1}
+.idx{display:flex; align-items:center; gap:12px; margin-bottom:26px; font-size:12px; font-weight:700; letter-spacing:.2em}
+.idx b{color:#EDEDED; font-size:15px}
+.idx span{color:var(--fg-faint); text-transform:uppercase}
+.idx .bar{width:40px; height:1px; background:#555}
+.title{font-family:"Michroma","Inter",sans-serif; font-size:clamp(26px,4.6vw,58px); font-weight:400; line-height:1.14; letter-spacing:.02em; margin-bottom:8px; text-transform:uppercase}
+.title .a{color:var(--fg)}
+.title .b{color:var(--fg)}
+.sub{margin-top:26px; font-size:13px; letter-spacing:.06em; color:var(--fg-dim)}
+.sub b{color:#EDEDED; font-weight:700}
+.accent-rule{width:64px; height:2px; background:#3A3A3A; margin:34px 0 0}
+
+/* ===== 概要テーブル ===== */
+.profile{position:relative; z-index:1; max-width:960px; margin-top:clamp(44px,5vw,72px); border-top:1px solid #2A2A2A}
+.prow{display:grid; grid-template-columns:210px 1fr; gap:24px; padding:24px 0 24px 18px; border-bottom:1px solid #1E1E1E;
+  position:relative; transition:background .3s}
+.prow::before{content:""; position:absolute; left:0; top:0; bottom:0; width:2px; background:transparent; transition:background .3s}
+.prow:hover{background:rgba(255,255,255,.015)}
+.prow:hover::before{background:#888}
+.prow dt{color:#8A8A8A; font-weight:700; letter-spacing:.06em; font-size:13.5px}
+.prow dd{color:#EDEDED; line-height:1.75; font-size:14.5px}
+.prow dd .note{color:var(--fg-dim); font-size:13px}
+.prow dd .fill{color:var(--fg-faint); font-size:12.5px}
+.hl{color:#FFFFFF; font-weight:700}
+@media (max-width:640px){ .prow{grid-template-columns:1fr; gap:6px; padding-left:14px} }
+
+/* ===== フッター ===== */
+.footer{border-top:1px solid #1A1A1A; padding:clamp(48px,6vw,80px) clamp(24px,5vw,80px) clamp(32px,4vw,52px)}
+.footer .row{display:flex; align-items:flex-end; justify-content:space-between; gap:24px; flex-wrap:wrap; font-size:11.5px; color:#6A6A6A; line-height:1.8}
+.footer .brand img{height:34px; margin-bottom:12px}
+.footer .links{display:flex; gap:22px}
+.footer .links a{color:#9A9A9A; transition:color .25s}
+.footer .links a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="logo"><img src="img/logo_txo_white.png" alt="TX OPERATIONS"></a>
+  <div class="nav-right">
+    <a href="about.html" class="nav-about">About</a>
+    <a href="careers.html" class="btn-apply">採用情報</a>
+  </div>
+</nav>
+
+<main class="wrap">
+  <div class="ghost-word">TX OPERATIONS</div>
+
+  <div class="head">
+    <div class="idx"><b>01</b><span class="bar"></span><span>Company Profile</span></div>
+    <h1 class="title"><span class="a">COMPANY</span><br><span class="b">PROFILE</span></h1>
+    <div class="accent-rule"></div>
+    <p class="sub"><b>TX Operations, Inc.</b> &nbsp;·&nbsp; Established 2020 &nbsp;·&nbsp; Tokyo, Japan</p>
+  </div>
+
+  <dl class="profile">
+    <div class="prow"><dt>社名</dt><dd>TX Operations 株式会社</dd></div>
+    <div class="prow"><dt>設立</dt><dd>2020年4月　<span class="note">（Model T Operations 株式会社として設立）</span></dd></div>
+    <div class="prow"><dt>商号変更</dt><dd><span class="hl">2026年8月1日</span>　TX Operations 株式会社へ</dd></div>
+    <div class="prow"><dt>法人番号</dt><dd>2010401152164</dd></div>
+    <div class="prow"><dt>代表者</dt><dd>代表取締役　杉本 竜一</dd></div>
+    <div class="prow"><dt>所在地</dt><dd>東京都大田区平和島6-1-1 東京流通センター物流ビルA棟 AE3-3</dd></div>
+    <div class="prow"><dt>事業内容</dt><dd>ロボットの社会実装オペレーション事業<br><span class="note">導入から運用・保守までを一気通貫で提供</span></dd></div>
+    <div class="prow"><dt>グループ</dt><dd>Telexistence 株式会社（TX）グループ</dd></div>
+    <div class="prow"><dt>お問い合わせ</dt><dd><span class="fill">※メールアドレス設定予定</span></dd></div>
+  </dl>
+</main>
+
+<footer class="footer">
+  <div class="row">
+    <div>
+      <div class="brand"><img src="img/logo_txo_white.png" alt="TX OPERATIONS"></div>
+      © 2026 TX Operations株式会社<br>
+      東京都大田区平和島6-1-1 東京流通センター物流ビルA棟 AE3-3
+    </div>
+    <div class="links">
+      <a href="privacy.html">プライバシーポリシー</a>
+      <a href="https://tx-inc.com/ja/top/" target="_blank" rel="noopener">Telexistence →</a>
+      <a href="careers.html">採用情報 →</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

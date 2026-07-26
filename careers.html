@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>採用情報 — TX Operations 株式会社</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0A0A0A; --fg:#FFFFFF; --fg-dim:#9A9A9A; --fg-faint:#4A4A4A; --accent:#E8B22B;}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased; scroll-behavior:smooth}
+body{background:var(--bg); color:var(--fg); font-family:"Inter","Noto Sans JP",system-ui,sans-serif; font-feature-settings:"palt" 1}
+a{color:inherit; text-decoration:none}
+img{display:block}
+
+/* ===== NAV ===== */
+.nav{position:fixed; top:0; left:0; right:0; z-index:50; display:flex; align-items:center; justify-content:space-between;
+  padding:22px clamp(24px,5vw,80px); transition:background .4s, backdrop-filter .4s}
+.nav.scrolled{background:rgba(10,10,10,.78); backdrop-filter:blur(12px)}
+.nav .logo img{height:clamp(30px,3vw,46px); width:auto; display:block}
+.nav-right{display:flex; align-items:center; gap:clamp(20px,3vw,40px)}
+.nav-about{font-size:13px; font-weight:700; letter-spacing:.14em; color:rgba(255,255,255,.9); transition:color .25s}
+.nav-about:hover{color:var(--accent)}
+.lang-toggle{display:inline-flex; border:1px solid #3A3A3A; border-radius:3px; overflow:hidden; background:none; cursor:pointer; padding:0}
+.lang-toggle .l{padding:6px 11px; font-size:11px; font-weight:700; letter-spacing:.08em; color:#8A8A8A; transition:background .25s, color .25s}
+.lang-toggle .l.on{background:var(--accent); color:#0A0A0A}
+.btn-apply{display:inline-flex; align-items:center; gap:8px; padding:11px 22px; background:var(--accent); color:#0A0A0A;
+  font-size:12px; font-weight:700; letter-spacing:.08em; border-radius:3px; transition:transform .25s, box-shadow .25s}
+.btn-apply:hover{transform:translateY(-2px); box-shadow:0 10px 26px -8px rgba(232,178,43,.5)}
+
+/* ===== ヒーロー ===== */
+.chero{position:relative; min-height:100vh; overflow:hidden; display:flex; flex-direction:column; justify-content:center;
+  padding:clamp(120px,14vh,180px) clamp(24px,5vw,80px) clamp(60px,7vh,100px)}
+.chero .bg{position:absolute; inset:0; background:url("img/p4_g2.jpg") center/cover; filter:grayscale(.65) contrast(1.05) brightness(.45) saturate(.4)}
+.chero .bg.ph{background:repeating-linear-gradient(135deg,#141414 0 12px,#0D0D0D 12px 24px); filter:none}
+.chero .scrim{position:absolute; inset:0;
+  background:linear-gradient(to bottom, rgba(10,10,10,.7) 0%, rgba(10,10,10,.35) 30%, rgba(10,10,10,.55) 70%, rgba(10,10,10,.9) 100%)}
+.chero .inner{position:relative; z-index:2; max-width:1180px; margin:0 auto; width:100%; text-align:center}
+.eyebrow{display:inline-flex; align-items:center; gap:12px; font-size:11px; font-weight:700; letter-spacing:.22em; color:var(--accent); margin-bottom:26px}
+.eyebrow::before,.eyebrow::after{content:""; width:34px; height:1px; background:rgba(232,178,43,.5)}
+.chero h1{font-size:clamp(38px,6.4vw,86px); font-weight:900; line-height:1.14; letter-spacing:-.01em; margin-bottom:26px}
+.chero .lead{font-size:clamp(13px,1.2vw,16px); line-height:1.9; color:var(--fg-dim); max-width:60ch; margin:0 auto clamp(44px,5vw,64px)}
+
+/* ===== 求人カード ===== */
+.jobs{display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(14px,1.6vw,22px); max-width:1180px; margin:0 auto; width:100%}
+.job{position:relative; text-align:left; padding:26px 26px 24px; border:1px solid #2A2A2A; background:rgba(14,14,14,.66);
+  backdrop-filter:blur(4px); border-radius:4px; overflow:hidden; transition:border-color .3s, transform .3s, background .3s}
+.job::before{content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--accent); transform:scaleY(0); transform-origin:top; transition:transform .35s}
+.job:hover{border-color:#4A4030; transform:translateY(-4px); background:rgba(20,20,20,.8)}
+.job:hover::before{transform:scaleY(1)}
+.job h3{font-size:clamp(15px,1.4vw,18px); font-weight:900; line-height:1.4; margin-bottom:10px}
+.job .meta{font-size:11.5px; letter-spacing:.04em; color:#8A8A8A; margin-bottom:16px; line-height:1.6}
+.badge{display:inline-block; font-size:10.5px; font-weight:700; letter-spacing:.1em; padding:5px 11px; border-radius:2px}
+.badge.open{background:var(--accent); color:#0A0A0A}
+.badge.soon{border:1px solid #444; color:#8A8A8A}
+.job-apply{display:block; margin-top:16px; font-size:11.5px; font-weight:700; letter-spacing:.06em; color:var(--accent)}
+.job-loading{grid-column:1/-1; text-align:center; color:#8A8A8A; font-size:13px; padding:30px 0}
+.jobs-note{max-width:1180px; margin:26px auto 0; padding:0 4px; font-size:11.5px; line-height:1.85; color:#6A6A6A; text-align:center}
+
+/* ===== 全求人ボタン ===== */
+.all-cta{display:flex; justify-content:center; margin-top:clamp(40px,5vw,64px)}
+.btn-all{display:inline-flex; align-items:center; gap:12px; padding:18px 44px; border-radius:4px;
+  background:var(--accent); color:#0A0A0A; font-size:14px; font-weight:900; letter-spacing:.06em;
+  transition:transform .25s, box-shadow .25s}
+.btn-all:hover{transform:translateY(-3px); box-shadow:0 16px 40px -12px rgba(232,178,43,.55)}
+
+/* ===== フッター ===== */
+.footer{border-top:1px solid #1A1A1A; padding:clamp(48px,6vw,80px) clamp(24px,5vw,80px) clamp(32px,4vw,52px)}
+.footer .row{display:flex; align-items:flex-end; justify-content:space-between; gap:24px; flex-wrap:wrap; font-size:11.5px; color:#6A6A6A; line-height:1.8; max-width:1180px; margin:0 auto}
+.footer .brand img{height:34px; margin-bottom:12px}
+.footer .links{display:flex; gap:22px}
+.footer .links a{color:#9A9A9A; transition:color .25s}
+.footer .links a:hover{color:var(--accent)}
+
+@media (max-width:900px){ .jobs{grid-template-columns:repeat(2,1fr)} }
+@media (max-width:560px){ .jobs{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <a href="index.html" class="logo"><img src="img/logo_txo_white.png" alt="TX OPERATIONS"></a>
+  <div class="nav-right">
+    <button class="lang-toggle" id="langToggle" aria-label="Language">
+      <span class="l l-ja on">JA</span><span class="l l-en">EN</span>
+    </button>
+    <a href="about.html" class="nav-about">About</a>
+    <a href="#top" class="btn-apply" data-en="Careers">採用情報</a>
+  </div>
+</nav>
+
+<header class="chero" id="top">
+  <div class="bg ph"></div>
+  <div class="scrim"></div>
+  <div class="inner">
+    <span class="eyebrow">Careers — TX Operations</span>
+    <h1 data-en="Driving the age of robots<br>from the field.">ロボットの時代を、<br>現場から動かす。</h1>
+    <p class="lead" data-en="No experience or industry background required. We're looking for the first generation to work alongside robots.">未経験・異業種歓迎。ロボットと共に働く「最初の世代」を、私たちは探しています。</p>
+
+    <div class="jobs" id="jobList">
+      <div class="job-loading" data-en="Loading positions…">求人を読み込み中…</div>
+    </div>
+
+    <p class="jobs-note" data-en="Recruitment and hiring for these roles are handled by TX Operations, Inc. (formerly Model T Operations), a wholly owned Telexistence group company. Applications are received through the group's shared recruiting system, Lever.">これらの求人の採用は TX Operations 株式会社（旧 Model T Operations／Telexistence 100%子会社）が行います。応募はグループ共通の採用システム Lever を通じて受け付けています。</p>
+
+    <div class="all-cta">
+      <a href="#" class="btn-all" id="allJobsBtn" data-en="See all openings &amp; apply　→">すべての求人・応募はこちら　→</a>
+    </div>
+  </div>
+</header>
+
+<footer class="footer">
+  <div class="row">
+    <div>
+      <div class="brand"><img src="img/logo_txo_white.png" alt="TX OPERATIONS"></div>
+      <span data-en="© 2026 TX Operations, Inc.<br>AE3-3, Bldg. A, TRC Logistics Bldg., 6-1-1 Heiwajima, Ota-ku, Tokyo">© 2026 TX Operations株式会社<br>東京都大田区平和島6-1-1 東京流通センター物流ビルA棟 AE3-3</span>
+    </div>
+    <div class="links">
+      <a href="privacy.html" data-en="Privacy Policy">プライバシーポリシー</a>
+      <a href="https://tx-inc.com/ja/top/" target="_blank" rel="noopener">Telexistence →</a>
+      <a href="about.html" data-en="Company →">会社概要 →</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+addEventListener('scroll', function(){ document.getElementById('nav').classList.toggle('scrolled', scrollY>40); }, {passive:true});
+
+/* 現在の言語（トップページと共通の txo_lang を参照） */
+var currentLang='ja';
+try{ currentLang=localStorage.getItem('txo_lang')||'ja'; }catch(e){}
+
+/* ===== 日英切り替え ===== */
+(function(){
+  var t=document.getElementById('langToggle'); if(!t) return;
+  var ja=t.querySelector('.l-ja'), en=t.querySelector('.l-en');
+  window.setLang=function(l){
+    currentLang=l;
+    document.querySelectorAll('[data-en]').forEach(function(el){
+      if(el.dataset.jaHtml===undefined) el.dataset.jaHtml=el.innerHTML;
+      el.innerHTML = (l==='en') ? el.dataset.en : el.dataset.jaHtml;
+    });
+    document.documentElement.lang = l;
+    ja.classList.toggle('on', l==='ja');
+    en.classList.toggle('on', l==='en');
+    try{ localStorage.setItem('txo_lang', l); }catch(e){}
+  };
+  ja.addEventListener('click', function(){ setLang('ja'); });
+  en.addEventListener('click', function(){ setLang('en'); });
+  setLang(currentLang);
+})();
+
+/* ===== Lever から TX Operations（旧 Model T Operations）の求人を自動取得 ===== */
+(function(){
+  var LEVER_SITE='tx-inc.com';
+  /* Lever側で部門名をリネームしても両方ヒットするよう許可 */
+  var DEPTS=['TX Operations','Model T Operations'];
+  /* 「すべての求人」ボタンの絞り込み先。Leverで部門名を変更したら 'TX Operations' に更新 */
+  var BOARD_DEPT='Model T Operations';
+
+  var list=document.getElementById('jobList');
+  var allBtn=document.getElementById('allJobsBtn');
+  if(allBtn) allBtn.href='https://jobs.lever.co/'+LEVER_SITE+'?department='+encodeURIComponent(BOARD_DEPT);
+
+  /* 取得失敗時のフォールバック（2026-07時点のスナップショット） */
+  var FALLBACK=[
+    {text:"フィールドサービス＆デプロイメントメカニック(東京) / Field Service & Deployment Mechanic (Tokyo)",categories:{team:"Production & Services",commitment:"正社員 / パート / 委託",location:"東京",department:"Model T Operations"},hostedUrl:"https://jobs.lever.co/tx-inc.com/5db0a576-4cff-409e-8e4c-cd47c352eadd"},
+    {text:"フィールドサービス＆デプロイメントメカニック(名古屋) / Field Service & Deployment Mechanic (Nagoya)",categories:{team:"Production & Services",commitment:"正社員 / パート / 委託",location:"名古屋",department:"Model T Operations"},hostedUrl:"https://jobs.lever.co/tx-inc.com/a7104e09-ee56-4905-86cf-95364ee2450c"},
+    {text:"ロボット組立エンジニア / Assembly Engineer",categories:{team:"Production & Services",commitment:"正社員",location:"東京",department:"Model T Operations"},hostedUrl:"https://jobs.lever.co/tx-inc.com/a64fef90-2915-445e-9774-d45a57d1155a"},
+    {text:"Logistics Robotic Support Lead",categories:{team:"Operations",commitment:"正社員",location:"東京",department:"Model T Operations"},hostedUrl:"https://jobs.lever.co/tx-inc.com/fcd08f48-0170-4f52-aad3-feb8cf625435"},
+    {text:"カスタマー・エクスペリエンス スペシャリスト",categories:{team:"Customer Experience",commitment:"正社員 / パート / 委託",location:"東京",department:"Model T Operations"},hostedUrl:"https://jobs.lever.co/tx-inc.com/b5d40edb-612c-4dff-b710-694acd6e400f"},
+    {text:"ロボットデータコレクションセンターSV",categories:{team:"Operations",commitment:"正社員",location:"東京",department:"Model T Operations"},hostedUrl:"https://jobs.lever.co/tx-inc.com/218de7d0-8b5e-4223-97a6-465e89b2c2f6"},
+    {text:"ロボットデータコレクションセンターOP",categories:{team:"Operations",commitment:"アルバイト",location:"東京",department:"Model T Operations"},hostedUrl:"https://jobs.lever.co/tx-inc.com/6e55022a-81e7-4f6d-ba16-d4b61646fec0"}
+  ];
+
+  function render(jobs){
+    list.innerHTML='';
+    if(!jobs.length){
+      var d=document.createElement('div'); d.className='job-loading';
+      d.setAttribute('data-en','No open positions at the moment.');
+      d.textContent='現在募集中の求人はありません。';
+      list.appendChild(d); setLang(currentLang); return;
+    }
+    jobs.forEach(function(j){
+      var c=j.categories||{};
+      var a=document.createElement('a');
+      a.className='job'; a.href=j.hostedUrl; a.target='_blank'; a.rel='noopener';
+      var h=document.createElement('h3'); h.textContent=j.text; a.appendChild(h);
+      var m=document.createElement('div'); m.className='meta';
+      m.textContent=[c.team,c.commitment,c.location].filter(Boolean).join(' ・ '); a.appendChild(m);
+      var b=document.createElement('span'); b.className='badge open';
+      b.setAttribute('data-en','Open'); b.textContent='募集中'; a.appendChild(b);
+      var ap=document.createElement('span'); ap.className='job-apply';
+      ap.setAttribute('data-en','Apply →'); ap.textContent='応募する →'; a.appendChild(ap);
+      list.appendChild(a);
+    });
+    setLang(currentLang);
+  }
+
+  function pick(arr){ return arr.filter(function(j){ return DEPTS.indexOf((j.categories||{}).department)>-1; }); }
+
+  fetch('https://api.lever.co/v0/postings/'+LEVER_SITE+'?mode=json')
+    .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+    .then(function(data){ var txo=pick(data); render(txo.length?txo:FALLBACK); })
+    .catch(function(){ render(FALLBACK); });
+})();
+</script>
+</body>
+</html>
