@@ -238,6 +238,31 @@ html[lang="en"] .hero-sec h1{line-height:1.12}
 </style>
 </head>
 <body>
+  <!-- ===== 簡易パスワードゲート ===== -->
+<div id="txoGate" style="position:fixed;inset:0;z-index:2147483647;background:#0A0A0A;display:flex;align-items:center;justify-content:center;font-family:Inter,'Noto Sans JP',system-ui,sans-serif">
+  <form id="txoGateForm" style="width:min(360px,86vw);text-align:center">
+    <img src="img/logo_txo_white.png" alt="TX OPERATIONS" style="height:32px;width:auto;margin:0 auto 26px;opacity:.92">
+    <div style="color:#9A9A9A;font-size:12.5px;line-height:1.7;letter-spacing:.03em;margin-bottom:18px">このサイトは限定公開です。<br>パスワードを入力してください。</div>
+    <input id="txoGatePw" type="password" autocomplete="off" placeholder="Password" style="width:100%;padding:12px 14px;background:#141414;border:1px solid #333;border-radius:4px;color:#fff;font-size:14px;outline:none">
+    <button type="submit" style="width:100%;margin-top:12px;padding:12px;background:#E8B22B;color:#0A0A0A;border:none;border-radius:4px;font-weight:700;font-size:13px;letter-spacing:.06em;cursor:pointer">ENTER</button>
+    <div id="txoGateErr" style="color:#E86A5A;font-size:12px;margin-top:12px;min-height:16px"></div>
+  </form>
+</div>
+<script>
+(function(){
+  var PW='txo2026';
+  var KEY='txo_gate_ok';
+  var gate=document.getElementById('txoGate');
+  try{ if(localStorage.getItem(KEY)==='1'){ gate.parentNode.removeChild(gate); return; } }catch(e){}
+  document.documentElement.style.overflow='hidden';
+  var pw=document.getElementById('txoGatePw'); pw.focus();
+  document.getElementById('txoGateForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    if(pw.value===PW){ try{localStorage.setItem(KEY,'1');}catch(e){} document.documentElement.style.overflow=''; gate.parentNode.removeChild(gate); }
+    else{ document.getElementById('txoGateErr').textContent='パスワードが違います'; pw.value=''; pw.focus(); }
+  });
+})();
+</script>
 
 <!-- ===================== NAV ===================== -->
 <nav class="nav" id="nav">
