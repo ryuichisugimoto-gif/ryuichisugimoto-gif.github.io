@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>TX Operations 株式会社 — ロボットが、インフラになる。</title>
+<title>TX Operations — ロボティクスが現実世界へと不可逆的に広がる未来を加速する</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Noto+Sans:wght@400;500;700;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -62,9 +62,19 @@ html[lang="en"] .step-en{display:none}
 }
 .hero-sec .bg{
   position:absolute; inset:0; background-size:cover; background-position:center;
-  filter:saturate(.72) contrast(1.13);
+  filter:saturate(.6) contrast(1.2) brightness(.8);
 }
 .hero-sec .bg.ph{background:repeating-linear-gradient(135deg,#141414 0 12px,#0D0D0D 12px 24px); filter:none}
+/* P2(GHOST)だけ: ロボットを右へ寄せ、左側を暗くして文字を読みやすく */
+#ghost .bg{background-position:62% center}
+#ghost .scrim{
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,.68) 0%, rgba(0,0,0,0) 17%),
+    linear-gradient(to top, rgba(0,0,0,.92) 0%, rgba(0,0,0,.4) 22%, rgba(0,0,0,0) 50%),
+    linear-gradient(to right, rgba(0,0,0,.8) 0%, rgba(0,0,0,.4) 30%, rgba(0,0,0,0) 56%),
+    radial-gradient(120% 90% at 55% 40%, rgba(0,0,0,0) 55%, rgba(0,0,0,.34) 100%),
+    linear-gradient(rgba(12,16,26,.2), rgba(12,16,26,.2));
+}
 .hero-sec .bg-video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
   filter:saturate(.68) contrast(1.02) brightness(1.06);}
 /* デザイナー版に合わせ、画像はほぼそのまま。上（ナビ）と下（テキスト）だけ軽く暗く */
@@ -72,20 +82,24 @@ html[lang="en"] .step-en{display:none}
   position:absolute; inset:0;
   background:
     linear-gradient(to bottom, rgba(0,0,0,.68) 0%, rgba(0,0,0,0) 17%),
-    linear-gradient(to top, rgba(0,0,0,.9) 0%, rgba(0,0,0,.34) 20%, rgba(0,0,0,0) 46%);
+    linear-gradient(to top, rgba(0,0,0,.9) 0%, rgba(0,0,0,.34) 20%, rgba(0,0,0,0) 46%),
+    radial-gradient(120% 90% at 50% 40%, rgba(0,0,0,0) 55%, rgba(0,0,0,.34) 100%),
+    linear-gradient(rgba(12,16,26,.2), rgba(12,16,26,.2));
 }
 /* ゴーストワードマーク（デザイナー版の実ロゴ画像をFigma座標で配置） */
 .hero-sec .wm{position:absolute; z-index:1; height:auto; opacity:.28; pointer-events:none; user-select:none;}
-.wm-ghost{left:9%;  top:61%; width:34%; opacity:.34}
-.wm-phantom{left:2%; top:39%; width:95%}
+.wm-ghost{left:9%;  top:61%; width:34%; opacity:.58}
+.wm-phantom{left:2%; top:39%; width:95%; opacity:.5}
 /* TX G2 は背景が明るいので、濃い文字＋やや高い不透明度で視認性を確保 */
-.wm-g2{left:5%;   top:37%; width:28%; opacity:.30}
+.wm-g2{left:5%;   top:37%; width:28%; opacity:.48}
 .hero-sec .inner{position:relative; z-index:2; max-width:900px}
-.eyebrow{font-size:11px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--accent); margin-bottom:16px; display:block}
-.hero-sec h1{font-size:clamp(44px,8vw,104px); font-weight:900; line-height:1.08; letter-spacing:-.01em}
+.eyebrow{font-size:13px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--accent); margin-bottom:16px; display:block}
+.hero-sec h1{font-size:clamp(30px,4.4vw,58px); font-weight:900; line-height:1.14; letter-spacing:-.01em}
+html[lang="en"] .hero-sec .inner{max-width:1200px}
+html[lang="en"] .hero-sec h1{line-height:1.12}
 .hero-sec h2.robo{font-size:clamp(44px,7vw,96px); font-weight:900; line-height:1; letter-spacing:-.01em; margin-bottom:22px}
 .hero-sec .company{font-size:clamp(15px,1.4vw,19px); font-weight:700; letter-spacing:.04em; margin:6px 0 26px; color:#EDEDED}
-.hero-sec .desc{font-size:clamp(13px,1.05vw,15px); line-height:2; color:var(--fg-dim); max-width:56ch; margin-bottom:26px}
+.hero-sec .desc{font-size:clamp(13px,1.05vw,15px); line-height:2; color:#E8E8E8; text-shadow:0 1px 14px rgba(0,0,0,.75); max-width:56ch; margin-bottom:26px}
 .tags{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:8px}
 .tag{font-size:11px; letter-spacing:.06em; color:#CFCFCF; border:1px solid #333; padding:6px 12px; border-radius:2px}
 
@@ -127,12 +141,12 @@ html[lang="en"] .step-en{display:none}
   opacity:0; transform:translateY(46px);
   transition:opacity var(--t-out) ease, transform 900ms ease; pointer-events:none;}
 .chapter.on{opacity:1; transform:none; transition:opacity var(--t-in) ease, transform 1700ms cubic-bezier(.16,.8,.24,1);}
-.ch-index{display:block; margin-bottom:18px; font-size:10.5px; font-weight:700; letter-spacing:.2em; color:var(--accent)}
+.ch-index{display:block; margin-bottom:18px; font-size:13px; font-weight:700; letter-spacing:.2em; color:var(--accent)}
 .ch-year{font-size:clamp(54px,8.4vw,118px); font-weight:900; line-height:.94; letter-spacing:-.015em; margin-bottom:16px}
 .chapter.is-final{max-width:900px}
 .chapter.is-final .ch-year{font-size:clamp(34px,5.6vw,78px); line-height:1.14; letter-spacing:-.005em; color:var(--fg)}
 .ch-name{font-size:12px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:#CFCFCF; margin-bottom:16px}
-.ch-copy{font-size:clamp(13px,1.05vw,15px); line-height:2.05; color:var(--fg-dim); max-width:52ch}
+.ch-copy{font-size:clamp(13px,1.05vw,15px); line-height:2.05; color:#E8E8E8; text-shadow:0 1px 14px rgba(0,0,0,.75); max-width:52ch}
 .chapter .ch-index,.chapter .ch-year,.chapter .ch-name,.chapter .ch-copy{opacity:0; transform:translateY(20px); transition:opacity 900ms ease, transform 900ms ease;}
 .chapter.on .ch-index{opacity:1;transform:none;transition:opacity 1200ms ease 100ms, transform 1400ms cubic-bezier(.16,.8,.24,1) 100ms}
 .chapter.on .ch-year {opacity:1;transform:none;transition:opacity 1200ms ease 220ms, transform 1500ms cubic-bezier(.16,.8,.24,1) 220ms}
@@ -245,8 +259,8 @@ html[lang="en"] .step-en{display:none}
   <div class="scrim"></div>
   <div class="inner">
     <span class="eyebrow">2026.08.01 — Launch</span>
-    <div class="company" data-en="TX Operations, Inc.">TX Operations 株式会社</div>
-    <h1 data-en="Robots become<br>infrastructure.">ロボットが、<br>インフラになる。</h1>
+    <div class="company" data-en="TX Operations, Inc.">TX Operations</div>
+    <h1 data-en="Accelerate the irreversible<br>expansion of robotics into reality">ロボティクスが現実世界へと<br>不可逆的に広がる未来を加速する</h1>
     <div class="hero-cta">
       <a href="careers.html" class="btn-apply" data-en="Careers →">採用情報 →</a>
       <a href="#ghost" class="btn-ghost">Scroll ↓</a>
@@ -262,7 +276,7 @@ html[lang="en"] .step-en{display:none}
 
   <div class="inner">
     <span class="eyebrow">Robot 01 — Retail</span>
-    <h2 class="robo">TX GHOST</h2>
+    <h2 class="robo">GHOST</h2>
     <p class="desc" data-en="An AI robot that automates beverage restocking in convenience store backrooms. Combining autonomous AI control with remote operation, it supports 24-hour store operations even amid labor shortages. Designed to run with existing shelves and fixtures—no store renovation required—it enables rapid nationwide rollout.">コンビニのバックヤードで、飲料の品出しを自動化するAIロボット。AIによる自律制御と遠隔操作を組み合わせ、24時間稼働する店舗のオペレーションを人手不足の中でも支える。既存店舗の改修を必要とせず、そのままの棚・什器に導入できる設計が、全国への素早い展開を可能にしている。</p>
   </div>
 </section>
@@ -289,7 +303,7 @@ html[lang="en"] .step-en{display:none}
   <div class="inner">
     <span class="eyebrow">Robot 03 — Humanoid</span>
     <h2 class="robo">TX G2</h2>
-    <p class="desc" data-en="A dual-arm humanoid taking on a range of situations, starting with bagging at the register. It acquires hard-to-standardize human handwork one task at a time and—fueled by data gathered in the field—keeps expanding the work it can handle.">双腕ヒューマノイドが、レジ袋詰めを皮切りに、様々なシチュエーションへ挑む。定型化しにくい人間の手作業を一つずつ獲得し、現場で得たデータを糧に、対応できる仕事の領域を広げ続ける。</p>
+    <p class="desc" data-en="A dual-arm humanoid for motion-data collection that fuels robotic foundation models. Built to gather the data needed to automate diverse labor tasks with approaches such as VLA, it can capture hard-to-standardize human handwork and whole-body movement.">ロボット基盤開発向けの動作データ収集向け双腕ヒューマノイド。様々な労働シーンの業務をVLAなどで自動化するための動作データ収集用機体であり、定型化しにくい人間の手作業や身体の全体運動のデータが収集可能。</p>
     <div class="tags">
       <span class="tag" data-en="Humanoid">ヒューマノイド</span>
       <span class="tag" data-en="Dual-arm manipulation">双腕マニピュレーション</span>
@@ -332,7 +346,7 @@ html[lang="en"] .step-en{display:none}
     </article>
     <article class="chapter" data-ghost="GHOST" data-hold="2100">
       <span class="ch-index">04 / 06</span><div class="ch-year">2024</div>
-      <div class="ch-name">TX GHOST</div>
+      <div class="ch-name">GHOST</div>
       <p class="ch-copy" data-en="A design that installs into existing shelves and fixtures. A structure that needs no renovation makes nationwide rollout possible.">既存の棚・什器のまま導入できる設計へ。改修を必要としない構造が、全国への展開を可能にする。</p>
     </article>
     <article class="chapter" data-ghost="PHANTOM" data-hold="2100">
@@ -343,7 +357,7 @@ html[lang="en"] .step-en{display:none}
     <article class="chapter is-final" data-ghost="TX &#215; TXO" data-hold="4600">
       <span class="ch-index">06 / 06</span><div class="ch-year" data-en="TX creates.<br>TXO proves.">TXが創り、<br>TXOが証明する。</div>
       <div class="ch-name">TX &#215; TX Operations</div>
-      <p class="ch-copy" data-en="Telexistence (TX) develops the robots; TX Operations (TXO) implements them in the field. TXO handles the machines TX creates end to end—from manufacturing to operation and repair—making them function as social infrastructure. This cycle roots robots in society.">Telexistence（TX）がロボットを開発し、TX Operations（TXO）が現場に実装する。TXが生んだ機体を、TXOが製造から運用・修理まで一気通貫で担い、社会インフラとして機能させる。この循環が、ロボットを社会に根づかせる。</p>
+      <p class="ch-copy" data-en="Telexistence (TX) develops the robots; TX Operations (TXO) implements them in the field. TXO handles the machines TX creates end to end—from manufacturing to operation and repair—making them function as social infrastructure. This cycle makes robotics an irreversible reality.">Telexistence（TX）がロボットを開発し、TX Operations（TXO）が現場に実装する。TXが生んだ機体を、TXOが製造から運用・修理まで一気通貫で担い、社会インフラとして機能させる。この循環が、ロボティクスを、不可逆な現実にする。</p>
     </article>
   </div>
   <div class="progress" id="progress">
@@ -355,42 +369,6 @@ html[lang="en"] .step-en{display:none}
     <button class="pbar" aria-label="TX × TXO"><i></i><span>TX × TXO</span></button>
   </div>
   <button class="toggle" id="toggle" aria-label="一時停止 / 再生">❚❚</button>
-</section>
-
-<!-- ===================== バリューチェーン（各部署） ===================== -->
-<section class="chain" id="chain">
-  <div class="chain-head">
-    <span class="label">Value Chain</span>
-    <h3 data-en="Proof means keeping it running in the field.">証明とは、現場で回し続けること。</h3>
-    <p data-en="TXO handles the machines TX creates end to end—from manufacturing to operation and repair. From production to customer satisfaction, six functions connect without a break, so robots keep working as social infrastructure.">TXが生んだ機体を、TXOが製造から運用・修理まで一気通貫で担う。製造から顧客満足まで、6つの部署が途切れずつながることで、ロボットは社会インフラとして機能しつづける。</p>
-  </div>
-  <div class="steps" id="steps">
-    <article class="step">
-      <div class="step-img"><img src="img/dept_seizou.jpg" alt="製造"><span class="no">01</span></div>
-      <div class="step-ja" data-en="Production">製造</div><div class="step-en">Production</div><p class="step-desc" data-en="Assembling the machines—where robots are born.">機体を組み、ロボットが生まれる。</p>
-    </article>
-    <article class="step">
-      <div class="step-img"><img src="img/dept_setti.jpg" alt="設置"><span class="no">02</span></div>
-      <div class="step-ja" data-en="Deployment">設置</div><div class="step-en">Deployment</div><p class="step-desc" data-en="On-site installation and initial setup.">現場での据付・初期設定・動き始める。</p>
-    </article>
-    <article class="step">
-      <div class="step-img"><img src="img/dept_cs.jpg" alt="カスタマーエクスペリエンス"><span class="no">03</span></div>
-      <div class="step-ja" data-en="Customer<br>Experience">カスタマー<br>エクスペリエンス</div><div class="step-en">Customer Experience</div><p class="step-desc" data-en="As the point of contact with stores, we talk directly with customers to raise satisfaction.">店舗との窓口として、お客様と直接会話し、満足度を高める。</p>
-    </article>
-    <article class="step">
-      <div class="step-img"><img src="img/dept_ope.jpg" alt="オペレーション"><span class="no">04</span></div>
-      <div class="step-ja" data-en="Operation">オペレーション</div><div class="step-en">Operation</div><p class="step-desc" data-en="Remote monitoring and a call center keep robots running reliably.">遠隔モニターとコールセンターを通じ、ロボットの安定稼働を守る。</p>
-    </article>
-    <article class="step">
-      <div class="step-img"><img src="img/dept_syuuri.jpg" alt="修理"><span class="no">05</span></div>
-      <div class="step-ja" data-en="Field Service">修理</div><div class="step-en">Field Service</div><p class="step-desc" data-en="On site when it counts.">いざという時、現場へ。</p>
-    </article>
-    <article class="step">
-      <div class="step-img"><img src="img/dept_cx.jpg" alt="データコレクション"><span class="no">06</span></div>
-      <div class="step-ja" data-en="Data Collection">データコレクション</div><div class="step-en">Data Collection</div><p class="step-desc" data-en="A new challenge.">新たなチャレンジ。</p>
-    </article>
-  </div>
-  <div class="chain-loop" data-en="Insights gained in the field flow back into the next round of development and production.">現場で得た知見が、次の開発・製造へと還る。</div>
 </section>
 
 <!-- ===================== フッター ===================== -->
