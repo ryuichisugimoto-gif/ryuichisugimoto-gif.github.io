@@ -1,263 +1,131 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>採用情報 — TX Operations 株式会社</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>採用情報 — TX Operations 株式会社</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0A0A0A; --fg:#FFFFFF; --fg-dim:#9A9A9A; --fg-faint:#4A4A4A; --accent:#E8B22B;}
+:root{--bg:#0A0A0A;--fg:#fff;--dim:#9A9A9A;--acc:#E8B22B;--line:#242424;--card:#141418;}
 *{box-sizing:border-box;margin:0;padding:0}
-html{-webkit-font-smoothing:antialiased; scroll-behavior:smooth}
-body{background:var(--bg); color:var(--fg); font-family:"Inter","Noto Sans JP",system-ui,sans-serif; font-feature-settings:"palt" 1}
-a{color:inherit; text-decoration:none}
-img{display:block}
-
-/* ===== NAV ===== */
-.nav{position:fixed; top:0; left:0; right:0; z-index:50; display:flex; align-items:center; justify-content:space-between;
-  padding:22px clamp(24px,5vw,80px); transition:background .4s, backdrop-filter .4s}
-.nav.scrolled{background:rgba(10,10,10,.78); backdrop-filter:blur(12px)}
-.nav .logo img{height:clamp(30px,3vw,46px); width:auto; display:block}
-.nav-right{display:flex; align-items:center; gap:clamp(20px,3vw,40px)}
-.nav-about{font-size:13px; font-weight:700; letter-spacing:.14em; color:rgba(255,255,255,.9); transition:color .25s}
-.nav-about:hover{color:var(--accent)}
-.lang-toggle{display:inline-flex; border:1px solid #3A3A3A; border-radius:3px; overflow:hidden; background:none; cursor:pointer; padding:0}
-.lang-toggle .l{padding:6px 11px; font-size:11px; font-weight:700; letter-spacing:.08em; color:#8A8A8A; transition:background .25s, color .25s}
-.lang-toggle .l.on{background:var(--accent); color:#0A0A0A}
-.btn-apply{display:inline-flex; align-items:center; gap:8px; padding:11px 22px; background:var(--accent); color:#0A0A0A;
-  font-size:12px; font-weight:700; letter-spacing:.08em; border-radius:3px; transition:transform .25s, box-shadow .25s}
-.btn-apply:hover{transform:translateY(-2px); box-shadow:0 10px 26px -8px rgba(232,178,43,.5)}
-
-/* ===== ヒーロー ===== */
-.chero{position:relative; min-height:100vh; overflow:hidden; display:flex; flex-direction:column; justify-content:center;
-  padding:clamp(120px,14vh,180px) clamp(24px,5vw,80px) clamp(60px,7vh,100px)}
-.chero .bg{position:absolute; inset:0; background:url("img/p4_g2.jpg") center/cover; filter:grayscale(.65) contrast(1.05) brightness(.45) saturate(.4)}
-.chero .bg.ph{background:repeating-linear-gradient(135deg,#141414 0 12px,#0D0D0D 12px 24px); filter:none}
-.chero .scrim{position:absolute; inset:0;
-  background:linear-gradient(to bottom, rgba(10,10,10,.7) 0%, rgba(10,10,10,.35) 30%, rgba(10,10,10,.55) 70%, rgba(10,10,10,.9) 100%)}
-.chero .inner{position:relative; z-index:2; max-width:1180px; margin:0 auto; width:100%; text-align:center}
-.eyebrow{display:inline-flex; align-items:center; gap:12px; font-size:11px; font-weight:700; letter-spacing:.22em; color:var(--accent); margin-bottom:26px}
-.eyebrow::before,.eyebrow::after{content:""; width:34px; height:1px; background:rgba(232,178,43,.5)}
-.chero h1{font-size:clamp(38px,6.4vw,86px); font-weight:900; line-height:1.14; letter-spacing:-.01em; margin-bottom:26px}
-.chero .lead{font-size:clamp(13px,1.2vw,16px); line-height:1.9; color:var(--fg-dim); max-width:60ch; margin:0 auto clamp(44px,5vw,64px)}
-
-/* ===== 求人カード ===== */
-.jobs{display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(14px,1.6vw,22px); max-width:1180px; margin:0 auto; width:100%}
-.job{position:relative; text-align:left; padding:26px 26px 24px; border:1px solid #2A2A2A; background:rgba(14,14,14,.66);
-  backdrop-filter:blur(4px); border-radius:4px; overflow:hidden; transition:border-color .3s, transform .3s, background .3s}
-.job::before{content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--accent); transform:scaleY(0); transform-origin:top; transition:transform .35s}
-.job:hover{border-color:#4A4030; transform:translateY(-4px); background:rgba(20,20,20,.8)}
-.job:hover::before{transform:scaleY(1)}
-.job h3{font-size:clamp(15px,1.4vw,18px); font-weight:900; line-height:1.4; margin-bottom:10px}
-.job .meta{font-size:11.5px; letter-spacing:.04em; color:#8A8A8A; margin-bottom:16px; line-height:1.6}
-.badge{display:inline-block; font-size:10.5px; font-weight:700; letter-spacing:.1em; padding:5px 11px; border-radius:2px}
-.badge.open{background:var(--accent); color:#0A0A0A}
-.badge.soon{border:1px solid #444; color:#8A8A8A}
-.job-apply{display:block; margin-top:16px; font-size:11.5px; font-weight:700; letter-spacing:.06em; color:var(--accent)}
-.job-loading{grid-column:1/-1; text-align:center; color:#8A8A8A; font-size:13px; padding:30px 0}
-.jobs-note{max-width:1180px; margin:26px auto 0; padding:0 4px; font-size:11.5px; line-height:1.85; color:#6A6A6A; text-align:center}
-
-/* ===== 全求人ボタン ===== */
-.all-cta{display:flex; justify-content:center; margin-top:clamp(40px,5vw,64px)}
-.btn-all{display:inline-flex; align-items:center; gap:12px; padding:18px 44px; border-radius:4px;
-  background:var(--accent); color:#0A0A0A; font-size:14px; font-weight:900; letter-spacing:.06em;
-  transition:transform .25s, box-shadow .25s}
-.btn-all:hover{transform:translateY(-3px); box-shadow:0 16px 40px -12px rgba(232,178,43,.55)}
-
-/* ===== フッター ===== */
-.footer{border-top:1px solid #1A1A1A; padding:clamp(48px,6vw,80px) clamp(24px,5vw,80px) clamp(32px,4vw,52px)}
-.footer .row{display:flex; align-items:flex-end; justify-content:space-between; gap:24px; flex-wrap:wrap; font-size:11.5px; color:#6A6A6A; line-height:1.8; max-width:1180px; margin:0 auto}
-.footer .brand img{height:34px; margin-bottom:12px}
-.footer .links{display:flex; gap:22px}
-.footer .links a{color:#9A9A9A; transition:color .25s}
-.footer .links a:hover{color:var(--accent)}
-
-@media (max-width:900px){ .jobs{grid-template-columns:repeat(2,1fr)} }
-@media (max-width:560px){ .jobs{grid-template-columns:1fr} }
-</style>
-</head>
-<body>
-  <style>
-/* ===== モバイル最適化：全画面フィット ===== */
 html,body{max-width:100%;overflow-x:hidden}
-img{max-width:100%}
-@media (max-width:600px){
-  /* ナビ：ロゴ＋社名は残し、メニューを2段目に折り返して全項目表示 */
-  .nav{flex-wrap:wrap !important;justify-content:center !important;row-gap:10px !important;padding:12px 14px !important}
-  .nav.scrolled{padding:10px 14px !important}
-  .nav .logo{flex-basis:100% !important;display:flex !important;justify-content:center !important}
-  .nav .logo img{height:28px !important;width:auto !important}
-  .nav.scrolled .logo img{height:26px !important}
-  .nav-right{width:100% !important;justify-content:center !important;gap:16px !important}
-  .nav-about{font-size:12px !important;letter-spacing:.05em !important}
-  .btn-apply{padding:8px 14px !important;font-size:11px !important;letter-spacing:.03em !important}
-  .lang-toggle .l{padding:5px 9px !important;font-size:10.5px !important}
-  .hero-sec{padding-left:16px !important;padding-right:16px !important}
-  .hero-sec h1{font-size:20px !important;line-height:1.5 !important}
-  html[lang="en"] .hero-sec h1{font-size:20px !important;line-height:1.45 !important}
-  .chero h1{font-size:28px !important;line-height:1.3 !important}
-  .origin .ch-year{font-size:44px !important;margin-bottom:10px !important}
-  .origin .chapter.is-final .ch-year{font-size:26px !important}
-  .origin .ch-copy{font-size:12.5px !important;line-height:1.85 !important}
-  .origin .ch-name{margin-bottom:10px !important}
+body{background:var(--bg);color:var(--fg);font-family:"Inter","Noto Sans JP",system-ui,sans-serif;font-feature-settings:"palt" 1;line-height:1.7}
+img{display:block;max-width:100%} a{color:inherit;text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:0 32px}
+.eyebrow{color:var(--acc);font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;margin-bottom:16px}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:20px 32px;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50;background:rgba(10,10,10,.9);backdrop-filter:blur(10px)}
+.nav .logo img{height:44px}
+.nav-right{display:flex;align-items:center;gap:26px}
+.lang{display:inline-flex;border:1px solid #3A3A3A;border-radius:3px;overflow:hidden;font-size:11px;font-weight:700;cursor:pointer;background:none;padding:0}
+.lang .l{padding:5px 10px;color:#8A8A8A} .lang .l.on{background:var(--acc);color:#0A0A0A}
+.nav-about{font-size:13px;font-weight:700;letter-spacing:.1em;color:#EDEDED}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--acc);color:#0A0A0A;font-weight:700;font-size:13px;letter-spacing:.04em;padding:11px 20px;border-radius:3px}
+.btn.big{padding:16px 34px;font-size:15px}
+.btn.ghost{background:none;color:#fff;border-bottom:1px solid rgba(255,255,255,.35);border-radius:0;padding:2px 0}
+.footer{border-top:1px solid var(--line);padding:44px 32px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px;color:#6A6A6A;font-size:11.5px;line-height:1.8}
+.footer img{height:30px;margin-bottom:12px} .footer .links{display:flex;gap:20px} .footer .links a{color:#9A9A9A}
+@media(max-width:600px){
+ .nav{flex-wrap:wrap;justify-content:center;row-gap:10px;padding:12px 14px}
+ .nav .logo{flex-basis:100%;display:flex;justify-content:center} .nav .logo img{height:28px}
+ .nav-right{width:100%;justify-content:center;gap:14px}
+ .wrap{padding:0 18px}
 }
-</style>
-  <!-- ===== 簡易パスワードゲート ===== -->
+
+.hero-band{background:#0A0A0A} .hero{padding:72px 0 28px;text-align:center}
+.hero h1{font-size:88px;font-weight:900;line-height:1.16;letter-spacing:-.01em;margin-bottom:24px}
+.hero p.sub{color:#C8C8C8;font-size:17px;margin-bottom:34px;white-space:nowrap}
+.hero-cta{display:flex;gap:22px;align-items:center;justify-content:center}
+.allcta{text-align:center;padding:6px 0 34px}
+.sec{padding:48px 0 84px} .sec-head{margin-bottom:36px}
+.sec-head h2{font-size:34px;font-weight:900;letter-spacing:-.01em} .sec-head .s{color:var(--dim);font-size:14px;margin-top:10px}
+.deptlist{display:flex;flex-direction:column;gap:18px}
+.dept{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:28px 34px}
+.dept h3{font-size:24px;font-weight:900;color:var(--acc);margin-bottom:11px}
+.dept .desc{color:#C4C4C4;font-size:14px;line-height:1.9;margin-bottom:16px;max-width:78ch}
+.itvlink{display:inline-flex;align-items:center;gap:8px;color:var(--acc);font-size:13.5px;font-weight:700;padding:9px 16px;border:1px solid #4A4030;border-radius:3px;margin-bottom:22px}
+.itvlink:hover{background:rgba(232,178,43,.08)}
+.poslabel{font-size:11.5px;font-weight:700;letter-spacing:.14em;color:#8A8A8A;margin:2px 0 12px}
+.poslist{display:flex;flex-direction:column;gap:8px}
+.pos{display:grid;grid-template-columns:1fr auto auto;gap:18px;align-items:center;background:#101014;border:1px solid var(--line);border-radius:3px;padding:13px 16px}
+.pos:hover{border-color:#4A4030}
+.pos .pt{font-size:13.5px;font-weight:700;color:#fff}
+.pos .pm{font-size:11px;color:#8A8A8A;white-space:nowrap} .pos .pa{color:var(--acc);font-size:12px;font-weight:700;white-space:nowrap}
+.posnone{font-size:12.5px;color:#8A8A8A;background:#101014;border:1px dashed #2E2E36;border-radius:3px;padding:13px 16px}
+.contactbar{text-align:center;padding:42px 0;border-top:1px solid var(--line);color:var(--dim);font-size:13px} .contactbar a{color:var(--acc)}
+@media(max-width:600px){
+ .hero{padding:20px 0 18px} .hero h1{font-size:34px;line-height:1.25} .hero p.sub{white-space:normal;font-size:14px}
+ .dept{padding:22px 18px} .pos{grid-template-columns:1fr;gap:5px} .sec-head h2{font-size:26px}
+}
+</style></head><body>
+
 <div id="txoGate" style="position:fixed;inset:0;z-index:2147483647;background:#0A0A0A;display:flex;align-items:center;justify-content:center;font-family:Inter,'Noto Sans JP',system-ui,sans-serif">
   <form id="txoGateForm" style="width:min(360px,86vw);text-align:center">
     <img src="img/logo_txo_white.png" alt="TX OPERATIONS" style="height:32px;width:auto;margin:0 auto 26px;opacity:.92">
-    <div style="color:#9A9A9A;font-size:12.5px;line-height:1.7;letter-spacing:.03em;margin-bottom:18px">このサイトは限定公開です。<br>パスワードを入力してください。</div>
+    <div style="color:#9A9A9A;font-size:12.5px;line-height:1.7;margin-bottom:18px">このサイトは限定公開です。<br>パスワードを入力してください。</div>
     <input id="txoGatePw" type="password" autocomplete="off" placeholder="Password" style="width:100%;padding:12px 14px;background:#141414;border:1px solid #333;border-radius:4px;color:#fff;font-size:14px;outline:none">
     <button type="submit" style="width:100%;margin-top:12px;padding:12px;background:#E8B22B;color:#0A0A0A;border:none;border-radius:4px;font-weight:700;font-size:13px;letter-spacing:.06em;cursor:pointer">ENTER</button>
     <div id="txoGateErr" style="color:#E86A5A;font-size:12px;margin-top:12px;min-height:16px"></div>
-  </form>
-</div>
-<script>
-(function(){
-  var PW='txo2026';
-  var KEY='txo_gate_ok';
-  var gate=document.getElementById('txoGate');
-  try{ if(localStorage.getItem(KEY)==='1'){ gate.parentNode.removeChild(gate); return; } }catch(e){}
-  document.documentElement.style.overflow='hidden';
-  var pw=document.getElementById('txoGatePw'); pw.focus();
-  document.getElementById('txoGateForm').addEventListener('submit',function(e){
-    e.preventDefault();
-    if(pw.value===PW){ try{localStorage.setItem(KEY,'1');}catch(e){} document.documentElement.style.overflow=''; gate.parentNode.removeChild(gate); }
-    else{ document.getElementById('txoGateErr').textContent='パスワードが違います'; pw.value=''; pw.focus(); }
-  });
-})();
-</script>
+  </form></div>
+<script>(function(){var PW='txo2026',KEY='txo_gate_ok',g=document.getElementById('txoGate');
+try{if(localStorage.getItem(KEY)==='1'){g.parentNode.removeChild(g);return;}}catch(e){}
+document.documentElement.style.overflow='hidden';var pw=document.getElementById('txoGatePw');pw.focus();
+document.getElementById('txoGateForm').addEventListener('submit',function(e){e.preventDefault();
+if(pw.value===PW){try{localStorage.setItem(KEY,'1');}catch(e){}document.documentElement.style.overflow='';g.parentNode.removeChild(g);}
+else{document.getElementById('txoGateErr').textContent='パスワードが違います';pw.value='';pw.focus();}});})();</script>
 
-<nav class="nav" id="nav">
-  <a href="TXO_LP_web見本.html" class="logo"><img src="img/logo_txo_white.png" alt="TX OPERATIONS"></a>
-  <div class="nav-right">
-    <button class="lang-toggle" id="langToggle" aria-label="Language">
-      <span class="l l-ja on">JA</span><span class="l l-en">EN</span>
-    </button>
-    <a href="about.html" class="nav-about">About</a>
-    <a href="#top" class="btn-apply" data-en="Careers">採用情報</a>
-  </div>
-</nav>
-
-<header class="chero" id="top">
-  <div class="bg ph"></div>
-  <div class="scrim"></div>
-  <div class="inner">
-    <span class="eyebrow">Careers — TX Operations</span>
-    <h1 data-en="Driving the age of physical<br>AI from the field.">フィジカルAIの時代を、<br>現場から動かす。</h1>
-    <p class="lead" data-en="No experience or industry background required. We're looking for the first generation to work alongside robots.">未経験・異業種歓迎。ロボットと共に働く「最初の世代」を、私たちは探しています。</p>
-
-    <div class="jobs" id="jobList">
-      <div class="job-loading" data-en="Loading positions…">求人を読み込み中…</div>
-    </div>
-
-    <p class="jobs-note" data-en="Recruitment and hiring for these roles are handled by TX Operations, Inc. (formerly Model T Operations), a wholly owned Telexistence group company. Applications are received through the group's shared recruiting system, Lever.">これらの求人の採用は TX Operations 株式会社（旧 Model T Operations／Telexistence 100%子会社）が行います。応募はグループ共通の採用システム Lever を通じて受け付けています。</p>
-
-    <div class="all-cta">
-      <a href="#" class="btn-all" id="allJobsBtn" data-en="See all openings &amp; apply　→">すべての求人・応募はこちら　→</a>
-    </div>
-
-    <p class="jobs-note" style="margin-top:26px" data-en="Questions about a role or your application? Contact us at <a href=&quot;mailto:careers-txo@tx-inc.com&quot; style=&quot;color:var(--accent)&quot;>careers-txo@tx-inc.com</a>.">求人内容・応募についてのお問い合わせは <a href="mailto:careers-txo@tx-inc.com" style="color:var(--accent)">careers-txo@tx-inc.com</a> までお気軽にどうぞ。</p>
-  </div>
-</header>
-
-<footer class="footer">
-  <div class="row">
-    <div>
-      <div class="brand"><img src="img/logo_txo_white.png" alt="TX OPERATIONS"></div>
-      <span data-en="© 2026 TX Operations, Inc.<br>AE3-3, Bldg. A, TRC Logistics Bldg., 6-1-1 Heiwajima, Ota-ku, Tokyo">© 2026 TX Operations株式会社<br>東京都大田区平和島6-1-1 東京流通センター物流ビルA棟 AE3-3</span>
-    </div>
-    <div class="links">
-      <a href="privacy.html" data-en="Privacy Policy">プライバシーポリシー</a>
-      <a href="https://tx-inc.com/ja/top/" target="_blank" rel="noopener">Telexistence →</a>
-      <a href="about.html" data-en="Company →">会社概要 →</a>
-    </div>
-  </div>
-</footer>
+<nav class="nav"><a class="logo" href="index.html"><img src="img/logo_txo_white.png" alt="TX OPERATIONS"></a><div class="nav-right"><button class="lang" id="langToggle"><span class="l l-ja on">JA</span><span class="l l-en">EN</span></button><a class="nav-about" href="about.html">About</a><a class="btn" href="careers.html" data-en="Careers Top">採用情報TOP</a></div></nav>
+<section class="hero-band"><div class="wrap hero">
+  <div class="eyebrow">Careers — TX Operations</div>
+  <h1 data-en="Driving the age of physical<br>AI from the field.">フィジカルAIの時代を、<br>現場から動かす。</h1>
+  <p class="sub" data-en="Put your experience to work in the social implementation of cutting-edge robotics.">あなたのこれまでの経験を、最先端ロボットの社会実装で活かしませんか。</p>
+  <div class="hero-cta"><a class="btn ghost">Scroll ↓</a></div>
+</div></section>
+<section class="wrap allcta"><a class="btn big" href="https://jobs.lever.co/tx-inc.com" target="_blank" rel="noopener" data-en="See all openings &amp; apply →">すべての求人・応募はこちら　→</a></section>
+<section class="wrap sec"><div class="sec-head"><div class="eyebrow">Positions &amp; Voices</div>
+  <h2 data-en="Positions">職種紹介</h2>
+  <div class="s" data-en="By department: the work, member interviews, and current openings.">組織体制に沿って、各部門の仕事・メンバーインタビュー・現在の募集を紹介します。</div></div>
+  <div class="deptlist">
+<div class="dept"><h3 data-en="Customer Experience">カスタマーエクスペリエンス</h3><div class="desc" data-en="Partner with client stores and customers to embed robot operations and improve them day to day.">導入先の店舗・顧客に伴走し、ロボット運用の定着とオペレーション改善を担う。</div><a class="itvlink" href="iv_cx.html" data-en="Member Interview →">メンバーインタビュー →</a><div class="poslabel" data-en="Open positions">現在の募集</div><div class="poslist" id="pos-cx"><div class="posnone" data-en="Loading…">読み込み中…</div></div></div>
+<div class="dept"><h3 data-en="Robot Operations">ロボットオペレーション</h3><div class="desc" data-en="Keep robots running through the call center and data-collection operations.">コールセンターやデータ収集を通じて、ロボットの稼働を止めずに支える。</div><a class="itvlink" href="iv_ops.html" data-en="Member Interview →">メンバーインタビュー →</a><div class="poslabel" data-en="Open positions">現在の募集</div><div class="poslist" id="pos-ops"><div class="posnone" data-en="Loading…">読み込み中…</div></div></div>
+<div class="dept"><h3 data-en="Production & Material Management">生産・部材管理</h3><div class="desc" data-en="Assemble and produce the machines and manage parts and procurement.">機体の組立・製造と、部材の調達・管理を担う。ものづくりの経験が活きる。</div><a class="itvlink" href="iv_prod.html" data-en="Member Interview →">メンバーインタビュー →</a><div class="poslabel" data-en="Open positions">現在の募集</div><div class="poslist" id="pos-prod"><div class="posnone" data-en="Loading…">読み込み中…</div></div></div>
+<div class="dept"><h3 data-en="Field Services">フィールドサービス</h3><div class="desc" data-en="Maintain and support robots at stores and warehouses.">店舗・倉庫の現場で、ロボットを保守・サポート。現場・技術の経験を活かせる。</div><a class="itvlink" href="iv_fs.html" data-en="Member Interview →">メンバーインタビュー →</a><div class="poslabel" data-en="Open positions">現在の募集</div><div class="poslist" id="pos-fs"><div class="posnone" data-en="Loading…">読み込み中…</div></div></div>
+<div class="dept"><h3 data-en="Corporate">コーポレート</h3><div class="desc" data-en="HR, general affairs and the back office that supports our growth.">人事・総務など、事業の成長を支えるバックオフィス。</div><a class="itvlink" href="iv_corp.html" data-en="Member Interview →">メンバーインタビュー →</a><div class="poslabel" data-en="Open positions">現在の募集</div><div class="poslist" id="pos-corp"><div class="posnone" data-en="Loading…">読み込み中…</div></div></div>
+  </div></section>
+<section class="wrap contactbar" data-en="Questions about roles or applying? Contact &lt;a href=&quot;mailto:careers-txo@tx-inc.com&quot;&gt;careers-txo@tx-inc.com&lt;/a&gt;.">求人内容・応募についてのお問い合わせは <a href="mailto:careers-txo@tx-inc.com">careers-txo@tx-inc.com</a> までお気軽にどうぞ。</section>
+<footer class="footer"><div><img src="img/logo_txo_white.png" alt="TX OPERATIONS"><br><span data-en="© 2026 TX Operations, Inc.&lt;br&gt;AE3-3, Bldg. A, TRC Logistics Bldg., 6-1-1 Heiwajima, Ota-ku, Tokyo">© 2026 TX Operations株式会社<br>東京都大田区平和島6-1-1 東京流通センター物流ビルA棟 AE3-3</span></div><div class="links"><a href="privacy.html" data-en="Privacy Policy">プライバシーポリシー</a><a href="https://tx-inc.com/ja/top/" target="_blank" rel="noopener">Telexistence →</a><a href="about.html" data-en="Company →">会社概要 →</a></div></footer>
+<script>(function(){var t=document.getElementById('langToggle');if(!t)return;var ja=t.querySelector('.l-ja'),en=t.querySelector('.l-en');window.__setLang=function(l){document.querySelectorAll('[data-en]').forEach(function(el){if(el.dataset.jaHtml===undefined)el.dataset.jaHtml=el.innerHTML;el.innerHTML=(l==='en')?el.dataset.en:el.dataset.jaHtml;});document.documentElement.lang=l;ja.classList.toggle('on',l==='ja');en.classList.toggle('on',l==='en');try{localStorage.setItem('txo_lang',l);}catch(e){}};ja.addEventListener('click',function(){__setLang('ja');});en.addEventListener('click',function(){__setLang('en');});var s='ja';try{s=localStorage.getItem('txo_lang')||'ja';}catch(e){}__setLang(s);})();</script>
 
 <script>
-addEventListener('scroll', function(){ document.getElementById('nav').classList.toggle('scrolled', scrollY>40); }, {passive:true});
-
-/* 現在の言語（トップページと共通の txo_lang を参照） */
-var currentLang='ja';
-try{ currentLang=localStorage.getItem('txo_lang')||'ja'; }catch(e){}
-
-/* ===== 日英切り替え ===== */
 (function(){
-  var t=document.getElementById('langToggle'); if(!t) return;
-  var ja=t.querySelector('.l-ja'), en=t.querySelector('.l-en');
-  window.setLang=function(l){
-    currentLang=l;
-    document.querySelectorAll('[data-en]').forEach(function(el){
-      if(el.dataset.jaHtml===undefined) el.dataset.jaHtml=el.innerHTML;
-      el.innerHTML = (l==='en') ? el.dataset.en : el.dataset.jaHtml;
-    });
-    document.documentElement.lang = l;
-    ja.classList.toggle('on', l==='ja');
-    en.classList.toggle('on', l==='en');
-    try{ localStorage.setItem('txo_lang', l); }catch(e){}
-  };
-  ja.addEventListener('click', function(){ setLang('ja'); });
-  en.addEventListener('click', function(){ setLang('en'); });
-  setLang(currentLang);
-})();
-
-/* ===== Lever から TX Operations（旧 Model T Operations）の求人を自動取得 ===== */
-(function(){
-  var LEVER_SITE='tx-inc.com';
-  /* Lever側で部門名をリネームしても両方ヒットするよう許可 */
-  var DEPTS=['TX Operations','Model T Operations'];
-  /* 「すべての求人」ボタンの絞り込み先。Leverで部門名を変更したら 'TX Operations' に更新 */
-  var BOARD_DEPT='Model T Operations';
-
-  var list=document.getElementById('jobList');
-  var allBtn=document.getElementById('allJobsBtn');
-  if(allBtn) allBtn.href='https://jobs.lever.co/'+LEVER_SITE+'?department='+encodeURIComponent(BOARD_DEPT);
-
-  /* 取得失敗時のフォールバック（2026-07時点のスナップショット） */
   var FALLBACK=[
-    {text:"フィールドサービス＆デプロイメントメカニック(東京) / Field Service & Deployment Mechanic (Tokyo)",categories:{team:"Production & Services",commitment:"正社員 / パート / 委託",location:"東京",department:"Model T Operations"},hostedUrl:"https://jobs.lever.co/tx-inc.com/5db0a576-4cff-409e-8e4c-cd47c352eadd"},
-    {text:"フィールドサービス＆デプロイメントメカニック(名古屋) / Field Service & Deployment Mechanic (Nagoya)",categories:{team:"Production & Services",commitment:"正社員 / パート / 委託",location:"名古屋",department:"Model T Operations"},hostedUrl:"https://jobs.lever.co/tx-inc.com/a7104e09-ee56-4905-86cf-95364ee2450c"},
-    {text:"ロボット組立エンジニア / Assembly Engineer",categories:{team:"Production & Services",commitment:"正社員",location:"東京",department:"Model T Operations"},hostedUrl:"https://jobs.lever.co/tx-inc.com/a64fef90-2915-445e-9774-d45a57d1155a"},
-    {text:"Logistics Robotic Support Lead",categories:{team:"Operations",commitment:"正社員",location:"東京",department:"Model T Operations"},hostedUrl:"https://jobs.lever.co/tx-inc.com/fcd08f48-0170-4f52-aad3-feb8cf625435"},
-    {text:"カスタマー・エクスペリエンス スペシャリスト",categories:{team:"Customer Experience",commitment:"正社員 / パート / 委託",location:"東京",department:"Model T Operations"},hostedUrl:"https://jobs.lever.co/tx-inc.com/b5d40edb-612c-4dff-b710-694acd6e400f"},
-    {text:"ロボットデータコレクションセンターSV",categories:{team:"Operations",commitment:"正社員",location:"東京",department:"Model T Operations"},hostedUrl:"https://jobs.lever.co/tx-inc.com/218de7d0-8b5e-4223-97a6-465e89b2c2f6"},
-    {text:"ロボットデータコレクションセンターOP",categories:{team:"Operations",commitment:"アルバイト",location:"東京",department:"Model T Operations"},hostedUrl:"https://jobs.lever.co/tx-inc.com/6e55022a-81e7-4f6d-ba16-d4b61646fec0"}
+    {text:"カスタマー・エクスペリエンス スペシャリスト",categories:{team:"Customer Experience",commitment:"正社員／パート・委託",location:"東京"},hostedUrl:"https://jobs.lever.co/tx-inc.com/b5d40edb-612c-4dff-b710-694acd6e400f"},
+    {text:"Logistics Robotic Support Lead",categories:{team:"Operations",commitment:"正社員",location:"東京"},hostedUrl:"https://jobs.lever.co/tx-inc.com/fcd08f48-0170-4f52-aad3-feb8cf625435"},
+    {text:"ロボットデータコレクションセンター SV",categories:{team:"Operations",commitment:"正社員",location:"東京"},hostedUrl:"https://jobs.lever.co/tx-inc.com/218de7d0-8b5e-4223-97a6-465e89b2c2f6"},
+    {text:"ロボットデータコレクションセンター OP",categories:{team:"Operations",commitment:"アルバイト",location:"東京"},hostedUrl:"https://jobs.lever.co/tx-inc.com/6e55022a-81e7-4f6d-ba16-d4b61646fec0"},
+    {text:"ロボット組立エンジニア / Assembly Engineer",categories:{team:"Production & Services",commitment:"正社員",location:"東京"},hostedUrl:"https://jobs.lever.co/tx-inc.com/a64fef90-2915-445e-9774-d45a57d1155a"},
+    {text:"フィールドサービス＆デプロイメントメカニック(東京) / Field Service & Deployment Mechanic (Tokyo)",categories:{team:"Production & Services",commitment:"正社員／パート・委託",location:"東京"},hostedUrl:"https://jobs.lever.co/tx-inc.com/5db0a576-4cff-409e-8e4c-cd47c352eadd"},
+    {text:"フィールドサービス＆デプロイメントメカニック(名古屋) / Field Service & Deployment Mechanic (Nagoya)",categories:{team:"Production & Services",commitment:"正社員／パート・委託",location:"名古屋"},hostedUrl:"https://jobs.lever.co/tx-inc.com/a7104e09-ee56-4905-86cf-95364ee2450c"}
   ];
-
+  function deptOf(j){var team=((j.categories||{}).team||''),t=(j.text||'');
+    if(team==='Customer Experience')return 'cx';
+    if(team==='Operations')return 'ops';
+    if(/Corporate|Admin|HR|Human/i.test(team))return 'corp';
+    if(team==='Production & Services'){ if(/フィールド|Field/i.test(t))return 'fs'; return 'prod'; }
+    return null;}
   function render(jobs){
-    list.innerHTML='';
-    if(!jobs.length){
-      var d=document.createElement('div'); d.className='job-loading';
-      d.setAttribute('data-en','No open positions at the moment.');
-      d.textContent='現在募集中の求人はありません。';
-      list.appendChild(d); setLang(currentLang); return;
-    }
-    jobs.forEach(function(j){
-      var c=j.categories||{};
-      var a=document.createElement('a');
-      a.className='job'; a.href=j.hostedUrl; a.target='_blank'; a.rel='noopener';
-      var h=document.createElement('h3'); h.textContent=j.text; a.appendChild(h);
-      var m=document.createElement('div'); m.className='meta';
-      m.textContent=[c.team,c.commitment,c.location].filter(Boolean).join(' ・ '); a.appendChild(m);
-      var b=document.createElement('span'); b.className='badge open';
-      b.setAttribute('data-en','Open'); b.textContent='募集中'; a.appendChild(b);
-      var ap=document.createElement('span'); ap.className='job-apply';
-      ap.setAttribute('data-en','Apply →'); ap.textContent='応募する →'; a.appendChild(ap);
-      list.appendChild(a);
+    var groups={cx:[],ops:[],prod:[],fs:[],corp:[]};
+    jobs.forEach(function(j){var d=deptOf(j); if(d&&groups[d])groups[d].push(j);});
+    Object.keys(groups).forEach(function(slug){
+      var box=document.getElementById('pos-'+slug); if(!box)return; var arr=groups[slug];
+      if(!arr.length){ box.innerHTML='<div class="posnone" data-en="No open positions at the moment.">現在募集なし</div>'; }
+      else{ box.innerHTML=arr.map(function(j){var c=j.categories||{};
+        var meta=[c.team,c.commitment,c.location].filter(Boolean).join(' ・ ');
+        return '<a class="pos" href="'+j.hostedUrl+'" target="_blank" rel="noopener"><div class="pt">'+j.text+'</div><div class="pm">'+meta+'</div><span class="pa" data-en="Apply →">応募する →</span></a>';
+      }).join(''); }
     });
-    setLang(currentLang);
+    if(window.__setLang){var s='ja';try{s=localStorage.getItem('txo_lang')||'ja';}catch(e){}__setLang(s);}
   }
-
-  function pick(arr){ return arr.filter(function(j){ return DEPTS.indexOf((j.categories||{}).department)>-1; }); }
-
-  fetch('https://api.lever.co/v0/postings/'+LEVER_SITE+'?mode=json')
-    .then(function(r){ if(!r.ok) throw 0; return r.json(); })
-    .then(function(data){ var txo=pick(data); render(txo.length?txo:FALLBACK); })
-    .catch(function(){ render(FALLBACK); });
+  fetch('https://api.lever.co/v0/postings/tx-inc.com?mode=json')
+   .then(function(r){if(!r.ok)throw 0;return r.json();})
+   .then(function(data){render(data&&data.length?data:FALLBACK);})
+   .catch(function(){render(FALLBACK);});
 })();
 </script>
-</body>
-</html>
+
+</body></html>
