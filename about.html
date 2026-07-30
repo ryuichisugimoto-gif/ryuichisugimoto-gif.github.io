@@ -74,6 +74,7 @@ img{display:block}
 html,body{max-width:100%;overflow-x:hidden}
 img{max-width:100%}
 @media (max-width:600px){
+  /* ナビ：ロゴ＋社名は残し、メニューを2段目に折り返して全項目表示 */
   .nav{flex-wrap:wrap !important;justify-content:center !important;row-gap:10px !important;padding:12px 14px !important}
   .nav.scrolled{padding:10px 14px !important}
   .nav .logo{flex-basis:100% !important;display:flex !important;justify-content:center !important}
@@ -113,7 +114,7 @@ img{max-width:100%}
 </script>
 
 <nav class="nav">
-  <a href="index.html" class="logo"><img src="img/logo_txo_white.png" alt="TX OPERATIONS"></a>
+  <a href="TXO_LP_web見本.html" class="logo"><img src="img/logo_txo_white.png" alt="TX OPERATIONS"></a>
   <div class="nav-right">
     <button class="lang-toggle" id="langToggle" aria-label="Language">
       <span class="l l-ja on">JA</span><span class="l l-en">EN</span>
@@ -137,7 +138,6 @@ img{max-width:100%}
     <div class="prow"><dt data-en="Name change">商号変更</dt><dd data-en="<span class=&quot;hl&quot;>August 1, 2026</span>　to TX Operations, Inc."><span class="hl">2026年8月1日</span>　TX Operations 株式会社へ</dd></div>
     <div class="prow"><dt data-en="Corporate number">法人番号</dt><dd>2010401152164</dd></div>
     <div class="prow"><dt data-en="Representative">代表者</dt><dd data-en="Ryuichi Sugimoto, Representative Director">代表取締役　杉本 竜一</dd></div>
-    <div class="prow"><dt data-en="Location">所在地</dt><dd data-en="AE3-3, Bldg. A, TRC Logistics Bldg., 6-1-1 Heiwajima, Ota-ku, Tokyo">東京都大田区平和島6-1-1 東京流通センター物流ビルA棟 AE3-3</dd></div>
     <div class="prow"><dt data-en="Business">事業内容</dt><dd data-en="Robotics social-implementation operations business<br><span class=&quot;note&quot;>End-to-end delivery from deployment to operation and maintenance</span>">ロボットの社会実装オペレーション事業<br><span class="note">導入から運用・保守までを一気通貫で提供</span></dd></div>
     <div class="prow"><dt data-en="Group">グループ</dt><dd data-en="Telexistence, Inc. (TX) Group">Telexistence 株式会社（TX）グループ</dd></div>
     <div class="prow"><dt data-en="Contact">お問い合わせ</dt><dd><a href="mailto:info-txo@tx-inc.com" style="color:var(--accent)">info-txo@tx-inc.com</a></dd></div>
@@ -148,8 +148,7 @@ img{max-width:100%}
   <div class="row">
     <div>
       <div class="brand"><img src="img/logo_txo_white.png" alt="TX OPERATIONS"></div>
-      <span data-en="© 2026 TX Operations, Inc.<br>AE3-3, Bldg. A, TRC Logistics Bldg., 6-1-1 Heiwajima, Ota-ku, Tokyo">© 2026 TX Operations株式会社<br>
-      東京都大田区平和島6-1-1 東京流通センター物流ビルA棟 AE3-3</span>
+      <span data-en="© 2026 TX Operations, Inc.">© 2026 TX Operations株式会社</span>
     </div>
     <div class="links">
       <a href="privacy.html" data-en="Privacy Policy">プライバシーポリシー</a>
