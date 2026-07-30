@@ -63,7 +63,8 @@ li::before{content:"—"; position:absolute; left:0; color:#5A5A5A}
 </style>
 </head>
 <body>
-  <style>
+
+<style>
 /* ===== モバイル最適化：全画面フィット ===== */
 html,body{max-width:100%;overflow-x:hidden}
 img{max-width:100%}
@@ -78,17 +79,10 @@ img{max-width:100%}
   .nav-about{font-size:12px !important;letter-spacing:.05em !important}
   .btn-apply{padding:8px 14px !important;font-size:11px !important;letter-spacing:.03em !important}
   .lang-toggle .l{padding:5px 9px !important;font-size:10.5px !important}
-  .hero-sec{padding-left:16px !important;padding-right:16px !important}
-  .hero-sec h1{font-size:20px !important;line-height:1.5 !important}
-  html[lang="en"] .hero-sec h1{font-size:20px !important;line-height:1.45 !important}
-  .chero h1{font-size:28px !important;line-height:1.3 !important}
-  .origin .ch-year{font-size:44px !important;margin-bottom:10px !important}
-  .origin .chapter.is-final .ch-year{font-size:26px !important}
-  .origin .ch-copy{font-size:12.5px !important;line-height:1.85 !important}
-  .origin .ch-name{margin-bottom:10px !important}
 }
 </style>
-  <!-- ===== 簡易パスワードゲート ===== -->
+
+<!-- ===== 簡易パスワードゲート（限定公開・プレビュー用） ===== -->
 <div id="txoGate" style="position:fixed;inset:0;z-index:2147483647;background:#0A0A0A;display:flex;align-items:center;justify-content:center;font-family:Inter,'Noto Sans JP',system-ui,sans-serif">
   <form id="txoGateForm" style="width:min(360px,86vw);text-align:center">
     <img src="img/logo_txo_white.png" alt="TX OPERATIONS" style="height:32px;width:auto;margin:0 auto 26px;opacity:.92">
@@ -100,7 +94,7 @@ img{max-width:100%}
 </div>
 <script>
 (function(){
-  var PW='txo2026';
+  var PW='txo2026';            /* ← 共有パスワード（変更する場合はここだけ） */
   var KEY='txo_gate_ok';
   var gate=document.getElementById('txoGate');
   try{ if(localStorage.getItem(KEY)==='1'){ gate.parentNode.removeChild(gate); return; } }catch(e){}
@@ -115,7 +109,7 @@ img{max-width:100%}
 </script>
 
 <nav class="nav">
-  <a href="index.html" class="logo"><img src="img/logo_txo_white.png" alt="TX OPERATIONS"></a>
+  <a href="TXO_LP_web見本.html" class="logo"><img src="img/logo_txo_white.png" alt="TX OPERATIONS"></a>
   <div class="nav-right">
     <button class="lang-toggle" id="langToggle" aria-label="Language">
       <span class="l l-ja on">JA</span><span class="l l-en">EN</span>
@@ -198,7 +192,6 @@ img{max-width:100%}
     <h2 data-en="10. Business Operator Information & Contact">10. 事業者情報・お問い合わせ窓口</h2>
     <dl class="info">
       <div class="irow"><dt data-en="Business operator">事業者名</dt><dd data-en="TX Operations, Inc.">TX Operations 株式会社</dd></div>
-      <div class="irow"><dt data-en="Address">所在地</dt><dd data-en="AE3-3, Bldg. A, TRC Logistics Bldg., 6-1-1 Heiwajima, Ota-ku, Tokyo">東京都大田区平和島6-1-1 東京流通センター物流ビルA棟 AE3-3</dd></div>
       <div class="irow"><dt data-en="Contact">お問い合わせ</dt><dd><a href="mailto:info-txo@tx-inc.com" style="color:var(--accent)">info-txo@tx-inc.com</a></dd></div>
     </dl>
   </section>
@@ -208,8 +201,7 @@ img{max-width:100%}
   <div class="row">
     <div>
       <div class="brand"><img src="img/logo_txo_white.png" alt="TX OPERATIONS"></div>
-      <span data-en="© 2026 TX Operations, Inc.<br>AE3-3, Bldg. A, TRC Logistics Bldg., 6-1-1 Heiwajima, Ota-ku, Tokyo">© 2026 TX Operations株式会社<br>
-      東京都大田区平和島6-1-1 東京流通センター物流ビルA棟 AE3-3</span>
+      <span data-en="© 2026 TX Operations, Inc.">© 2026 TX Operations株式会社</span>
     </div>
     <div class="links">
       <a href="privacy.html" data-en="Privacy Policy">プライバシーポリシー</a>
