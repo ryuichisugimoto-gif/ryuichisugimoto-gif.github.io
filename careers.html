@@ -4,7 +4,7 @@
 <style>
 :root{--bg:#0A0A0A;--fg:#fff;--dim:#9A9A9A;--acc:#E8B22B;--line:#242424;--card:#141418;}
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{max-width:100%;overflow-x:hidden}
+html,body{max-width:100%;overflow-x:clip}
 body{background:var(--bg);color:var(--fg);font-family:"Inter","Noto Sans JP",system-ui,sans-serif;font-feature-settings:"palt" 1;line-height:1.7}
 img{display:block;max-width:100%} a{color:inherit;text-decoration:none}
 .wrap{max-width:1120px;margin:0 auto;padding:0 32px}
@@ -35,7 +35,7 @@ img{display:block;max-width:100%} a{color:inherit;text-decoration:none}
 .sec{padding:48px 0 84px} .sec-head{margin-bottom:36px}
 .sec-head h2{font-size:34px;font-weight:900;letter-spacing:-.01em} .sec-head .s{color:#FFFFFF;font-size:14px;margin-top:10px}
 .deptlist{display:flex;flex-direction:column;gap:18px}
-.dept{background:#23232B;border:1px solid #40404A;border-radius:4px;padding:28px 34px}
+.dept{background:#23232B;border:1px solid #40404A;border-radius:4px;padding:28px 34px;scroll-margin-top:96px}
 .dept h3{font-size:24px;font-weight:900;color:var(--acc);margin-bottom:11px}
 .dept .desc{color:#FFFFFF;font-size:14px;line-height:1.9;margin-bottom:16px;max-width:78ch}
 .itvlink{display:inline-flex;align-items:center;gap:8px;color:var(--acc);font-size:13.5px;font-weight:700;padding:9px 16px;border:1px solid #4A4030;border-radius:3px;margin-bottom:22px}
@@ -81,11 +81,11 @@ else{document.getElementById('txoGateErr').textContent='パスワードが違い
   <h2 data-en="Positions">職種紹介</h2>
   <div class="s" data-en="By department: the work, member interviews, and current openings.">組織体制に沿って、各部門の仕事・メンバーインタビュー・現在の募集を紹介します。</div></div>
   <div class="deptlist">
-<div class="dept"><h3 data-en="Customer Experience">カスタマーエクスペリエンス</h3><div class="desc" data-en="Partner with client stores and customers to embed robot operations and improve them day to day.">導入先の店舗・顧客に伴走し、ロボット運用の定着とオペレーション改善を担う。</div><a class="itvlink" href="iv_cx.html" data-en="Member Interview →">メンバーインタビュー →</a><div class="poslabel" data-en="Open positions">現在の募集</div><div class="poslist" id="pos-cx"><div class="posnone" data-en="Loading…">読み込み中…</div></div></div>
-<div class="dept"><h3 data-en="Robot Operations">ロボットオペレーション</h3><div class="desc" data-en="Keep robots running through the call center and data collection for the physical-AI era.">コールセンターやフィジカルAI時代のデータ収集を通じて、ロボットの稼働を止めずに支える。</div><a class="itvlink" href="iv_ops.html" data-en="Member Interview →">メンバーインタビュー →</a><div class="poslabel" data-en="Open positions">現在の募集</div><div class="poslist" id="pos-ops"><div class="posnone" data-en="Loading…">読み込み中…</div></div></div>
-<div class="dept"><h3 data-en="Production & Material Management">生産・資材管理</h3><div class="desc" data-en="Assemble and produce the machines and manage parts and procurement.">機体の組立・製造と、資材の調達・管理を担う。ものづくりの経験が活きる。</div><a class="itvlink" href="iv_prod.html" data-en="Member Interview →">メンバーインタビュー →</a><div class="poslabel" data-en="Open positions">現在の募集</div><div class="poslist" id="pos-prod"><div class="posnone" data-en="Loading…">読み込み中…</div></div></div>
-<div class="dept"><h3 data-en="Field Services">フィールドサービス</h3><div class="desc" data-en="Maintain and support robots at stores and warehouses.">店舗・倉庫の現場で、ロボットを保守・サポート。現場・技術の経験を活かせる。</div><a class="itvlink" href="iv_fs.html" data-en="Member Interview →">メンバーインタビュー →</a><div class="poslabel" data-en="Open positions">現在の募集</div><div class="poslist" id="pos-fs"><div class="posnone" data-en="Loading…">読み込み中…</div></div></div>
-<div class="dept"><h3 data-en="Corporate">コーポレート</h3><div class="desc" data-en="HR, general affairs and the back office that supports our growth.">人事・総務など、事業の成長を支えるバックオフィス。</div><a class="itvlink" href="iv_corp.html" data-en="Member Interview →">メンバーインタビュー →</a><div class="poslabel" data-en="Open positions">現在の募集</div><div class="poslist" id="pos-corp"><div class="posnone" data-en="Loading…">読み込み中…</div></div></div>
+<div class="dept" id="dept-cx"><h3 data-en="Customer Experience">カスタマーエクスペリエンス</h3><div class="desc" data-en="Partner with client stores and customers to embed robot operations and improve them day to day.">導入先の店舗・顧客に伴走し、ロボット運用の定着とオペレーション改善を担う。</div><a class="itvlink" href="iv_cx.html" data-en="Member Interview →">メンバーインタビュー →</a><div class="poslabel" data-en="Open positions">現在の募集</div><div class="poslist" id="pos-cx"><div class="posnone" data-en="Loading…">読み込み中…</div></div></div>
+<div class="dept" id="dept-ops"><h3 data-en="Robot Operations">ロボットオペレーション</h3><div class="desc" data-en="Keep robots running through the call center and data collection for the physical-AI era.">コールセンターやフィジカルAI時代のデータ収集を通じて、ロボットの稼働を止めずに支える。</div><a class="itvlink" href="iv_ops.html" data-en="Member Interview →">メンバーインタビュー →</a><div class="poslabel" data-en="Open positions">現在の募集</div><div class="poslist" id="pos-ops"><div class="posnone" data-en="Loading…">読み込み中…</div></div></div>
+<div class="dept" id="dept-prod"><h3 data-en="Production & Material Management">生産・資材管理</h3><div class="desc" data-en="Assemble and produce the machines and manage parts and procurement.">機体の組立・製造と、資材の調達・管理を担う。ものづくりの経験が活きる。</div><a class="itvlink" href="iv_prod.html" data-en="Member Interview →">メンバーインタビュー →</a><div class="poslabel" data-en="Open positions">現在の募集</div><div class="poslist" id="pos-prod"><div class="posnone" data-en="Loading…">読み込み中…</div></div></div>
+<div class="dept" id="dept-fs"><h3 data-en="Field Services">フィールドサービス</h3><div class="desc" data-en="Maintain and support robots at stores and warehouses.">店舗・倉庫の現場で、ロボットを保守・サポート。現場・技術の経験を活かせる。</div><a class="itvlink" href="iv_fs.html" data-en="Member Interview →">メンバーインタビュー →</a><div class="poslabel" data-en="Open positions">現在の募集</div><div class="poslist" id="pos-fs"><div class="posnone" data-en="Loading…">読み込み中…</div></div></div>
+<div class="dept" id="dept-corp"><h3 data-en="Corporate">コーポレート</h3><div class="desc" data-en="HR, general affairs and the back office that supports our growth.">人事・総務など、事業の成長を支えるバックオフィス。</div><a class="itvlink" href="iv_corp.html" data-en="Member Interview →">メンバーインタビュー →</a><div class="poslabel" data-en="Open positions">現在の募集</div><div class="poslist" id="pos-corp"><div class="posnone" data-en="Loading…">読み込み中…</div></div></div>
   </div></section>
 <section class="wrap contactbar" data-en="Questions about roles or applying? Contact &lt;a href=&quot;mailto:careers-txo@tx-inc.com&quot;&gt;careers-txo@tx-inc.com&lt;/a&gt;.">求人内容・応募についてのお問い合わせは <a href="mailto:careers-txo@tx-inc.com">careers-txo@tx-inc.com</a> までお気軽にどうぞ。</section>
 <footer class="footer"><div><img src="img/logo_txo_white.png" alt="TX OPERATIONS"><br><span data-en="© 2026 TX Operations, Inc.">© 2026 TX Operations株式会社</span></div><div class="links"><a href="privacy.html" data-en="Privacy Policy">プライバシーポリシー</a><a href="https://tx-inc.com/ja/top/" target="_blank" rel="noopener">Telexistence →</a><a href="about.html" data-en="Company →">会社概要 →</a></div></footer>
@@ -120,6 +120,7 @@ else{document.getElementById('txoGateErr').textContent='パスワードが違い
       }).join(''); }
     });
     if(window.__setLang){var s='ja';try{s=localStorage.getItem('txo_lang')||'ja';}catch(e){}__setLang(s);}
+    if(location.hash){var el=document.querySelector(location.hash);if(el){setTimeout(function(){el.scrollIntoView({block:'start'});},50);}}
   }
   fetch('https://api.lever.co/v0/postings/tx-inc.com?mode=json')
    .then(function(r){if(!r.ok)throw 0;return r.json();})
