@@ -122,7 +122,15 @@ else{document.getElementById('txoGateErr').textContent='パスワードが違い
     if(window.__setLang){var s='ja';try{s=localStorage.getItem('txo_lang')||'ja';}catch(e){}__setLang(s);}
     if(location.hash){var el=document.querySelector(location.hash);if(el){var go=function(){try{el.scrollIntoView({block:'start'});}catch(e){}};requestAnimationFrame(go);setTimeout(go,150);setTimeout(go,500);}}
   }
+  var done=false;
+  function once(fn){return function(a){if(done)return;done=true;fn(a);};}
+  var ok=once(function(data){render(data&&data.length?data:FALLBACK);});
+  var ng=once(function(){render(FALLBACK);});
+  setTimeout(ng,6000);
   fetch('https://api.lever.co/v0/postings/tx-inc.com?mode=json')
    .then(function(r){if(!r.ok)throw 0;return r.json();})
-   .then(function(data){render(data&&data.length?data:FALLBACK);})
-  
+   .then(ok).catch(ng);
+})();
+</script>
+
+</body></html>
