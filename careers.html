@@ -127,6 +127,7 @@ else{document.getElementById('txoGateErr').textContent='パスワードが違い
       }).join(''); }
     });
     if(window.__setLang){var s='ja';try{s=localStorage.getItem('txo_lang')||'ja';}catch(e){}__setLang(s);}
+    injectJobPostingSchema(jobs);
     if(location.hash){var el=document.querySelector(location.hash);if(el){var go=function(){try{el.scrollIntoView({block:'start'});}catch(e){}};requestAnimationFrame(go);setTimeout(go,150);setTimeout(go,500);}}
   }
   var done=false;
@@ -134,6 +135,29 @@ else{document.getElementById('txoGateErr').textContent='パスワードが違い
   var ok=once(function(data){render(data&&data.length?data:FALLBACK);});
   var ng=once(function(){render(FALLBACK);});
   setTimeout(ng,6000);
+  function injectJobPostingSchema(jobs){
+    var valid=(jobs||[]).filter(function(j){return j.descriptionPlain && j.createdAt;});
+    if(!valid.length)return;
+    var list=valid.map(function(j){var c=j.categories||{};
+      return {
+        "@context":"https://schema.org/",
+        "@type":"JobPosting",
+        "title":j.text,
+        "description":j.descriptionPlain,
+        "datePosted":new Date(j.createdAt).toISOString().slice(0,10),
+        "hiringOrganization":{"@type":"Organization","name":"TX Operations","sameAs":"https://txo-inc.com/"},
+        "jobLocation":{"@type":"Place","address":{"@type":"PostalAddress","addressLocality":c.location||"","addressCountry":"JP"}},
+        "employmentType":/アルバイト|パート/.test(c.commitment||'')?"OTHER":"FULL_TIME",
+        "directApply":true,
+        "url":j.hostedUrl
+      };
+    });
+    var old=document.getElementById('jobpostingSchema'); if(old)old.parentNode.removeChild(old);
+    var s=document.createElement('script');
+    s.type='application/ld+json'; s.id='jobpostingSchema';
+    s.textContent=JSON.stringify(list.length===1?list[0]:list);
+    document.head.appendChild(s);
+  }
   fetch('https://api.lever.co/v0/postings/tx-inc.com?mode=json')
    .then(function(r){if(!r.ok)throw 0;return r.json();})
    .then(ok).catch(ng);
