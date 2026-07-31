@@ -1,13 +1,5 @@
 <!DOCTYPE html><html lang="ja"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1"><title>採用情報 — TX Operations 株式会社</title>
-<meta name="description" content="TX Operationsの採用情報。カスタマーエクスペリエンス、ロボットオペレーション、生産・資材管理、フィールドサービス、コーポレートなど、フィジカルAI時代を現場から動かす仲間を募集しています。">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="TX Operations">
-<meta property="og:title" content="採用情報 — TX Operations 株式会社">
-<meta property="og:description" content="TX Operationsの採用情報。カスタマーエクスペリエンス、ロボットオペレーション、生産・資材管理、フィールドサービス、コーポレートなど、フィジカルAI時代を現場から動かす仲間を募集しています。">
-<meta property="og:url" content="https://txo-inc.com/careers.html">
-<meta property="og:image" content="https://txo-inc.com/img/logo_txo_white.png">
-<meta name="twitter:card" content="summary">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#0A0A0A;--fg:#fff;--dim:#9A9A9A;--acc:#E8B22B;--line:#242424;--card:#141418;}
@@ -59,6 +51,7 @@ img{display:block;max-width:100%} a{color:inherit;text-decoration:none}
 @media(max-width:600px){
  .hero{padding:20px 0 18px} .hero h1{font-size:34px;line-height:1.25} .hero p.sub{white-space:normal;font-size:14px}
  .dept{padding:22px 18px} .pos{grid-template-columns:1fr;gap:5px} .sec-head h2{font-size:26px}
+ .pos .pm{white-space:normal;line-height:1.5}
 }
 </style></head><body>
 
@@ -127,7 +120,6 @@ else{document.getElementById('txoGateErr').textContent='パスワードが違い
       }).join(''); }
     });
     if(window.__setLang){var s='ja';try{s=localStorage.getItem('txo_lang')||'ja';}catch(e){}__setLang(s);}
-    injectJobPostingSchema(jobs);
     if(location.hash){var el=document.querySelector(location.hash);if(el){var go=function(){try{el.scrollIntoView({block:'start'});}catch(e){}};requestAnimationFrame(go);setTimeout(go,150);setTimeout(go,500);}}
   }
   var done=false;
@@ -135,29 +127,6 @@ else{document.getElementById('txoGateErr').textContent='パスワードが違い
   var ok=once(function(data){render(data&&data.length?data:FALLBACK);});
   var ng=once(function(){render(FALLBACK);});
   setTimeout(ng,6000);
-  function injectJobPostingSchema(jobs){
-    var valid=(jobs||[]).filter(function(j){return j.descriptionPlain && j.createdAt;});
-    if(!valid.length)return;
-    var list=valid.map(function(j){var c=j.categories||{};
-      return {
-        "@context":"https://schema.org/",
-        "@type":"JobPosting",
-        "title":j.text,
-        "description":j.descriptionPlain,
-        "datePosted":new Date(j.createdAt).toISOString().slice(0,10),
-        "hiringOrganization":{"@type":"Organization","name":"TX Operations","sameAs":"https://txo-inc.com/"},
-        "jobLocation":{"@type":"Place","address":{"@type":"PostalAddress","addressLocality":c.location||"","addressCountry":"JP"}},
-        "employmentType":/アルバイト|パート/.test(c.commitment||'')?"OTHER":"FULL_TIME",
-        "directApply":true,
-        "url":j.hostedUrl
-      };
-    });
-    var old=document.getElementById('jobpostingSchema'); if(old)old.parentNode.removeChild(old);
-    var s=document.createElement('script');
-    s.type='application/ld+json'; s.id='jobpostingSchema';
-    s.textContent=JSON.stringify(list.length===1?list[0]:list);
-    document.head.appendChild(s);
-  }
   fetch('https://api.lever.co/v0/postings/tx-inc.com?mode=json')
    .then(function(r){if(!r.ok)throw 0;return r.json();})
    .then(ok).catch(ng);
