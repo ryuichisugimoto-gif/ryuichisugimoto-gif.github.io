@@ -493,7 +493,7 @@ document.addEventListener('DOMContentLoaded', function(){
     ghost.classList.remove('on');
     setTimeout(function(){
       var nm=chapters[idx].dataset.ghost;
-      var mp={'FORD-T':'img/tl_fordt.png','MODEL-T':'img/tl_modelt.png','SCARA':'img/tl_scara.png','GHOST':'img/tl_ghost.png','PHANTOM':'img/tl_phantom.png','TX × TXO':'img/tl_txtxo.png'};
+      var mp={'MODEL-T':'img/tl_modelt.png','SCARA':'img/tl_scara.png','GHOST':'img/tl_ghost.png','PHANTOM':'img/tl_phantom.png','TX × TXO':'img/tl_txtxo.png'};
       var im=ghost.querySelector('img'), sp=ghost.querySelector('span');
       if(mp[nm]){ im.src=mp[nm]; im.style.display='block'; sp.style.display='none'; }
       else { sp.textContent=nm; sp.style.display='inline-block'; im.style.display='none'; }
