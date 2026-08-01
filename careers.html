@@ -104,9 +104,10 @@ else{document.getElementById('txoGateErr').textContent='パスワードが違い
   ];
   function deptOf(j){var team=((j.categories||{}).team||''),t=(j.text||'');
     if(team==='Customer Experience')return 'cx';
-    if(team==='Operations')return 'ops';
+    if(team==='Robot Operation Center'||team==='Operations')return 'ops';
     if(/Corporate|Admin|HR|Human/i.test(team))return 'corp';
-    if(team==='Production & Services'){ if(/フィールド|Field/i.test(t))return 'fs'; return 'prod'; }
+    if(team==='Field Services')return 'fs';
+    if(team==='Production / Material Management'||team==='Production & Services'){ if(/フィールド|Field/i.test(t))return 'fs'; return 'prod'; }
     return null;}
   function render(jobs){
     var groups={cx:[],ops:[],prod:[],fs:[],corp:[]};
