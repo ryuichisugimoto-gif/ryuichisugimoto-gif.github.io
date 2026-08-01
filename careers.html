@@ -102,12 +102,13 @@ else{document.getElementById('txoGateErr').textContent='パスワードが違い
     {text:"フィールドサービス＆デプロイメントメカニック(東京) / Field Service & Deployment Mechanic (Tokyo)",categories:{team:"Production & Services",commitment:"正社員／パート・委託",location:"東京"},hostedUrl:"https://jobs.lever.co/tx-inc.com/5db0a576-4cff-409e-8e4c-cd47c352eadd"},
     {text:"フィールドサービス＆デプロイメントメカニック(名古屋) / Field Service & Deployment Mechanic (Nagoya)",categories:{team:"Production & Services",commitment:"正社員／パート・委託",location:"名古屋"},hostedUrl:"https://jobs.lever.co/tx-inc.com/a7104e09-ee56-4905-86cf-95364ee2450c"}
   ];
-  function deptOf(j){var team=((j.categories||{}).team||''),t=(j.text||'');
-    if(team==='Customer Experience')return 'cx';
-    if(team==='Robot Operation Center'||team==='Operations')return 'ops';
+  function deptOf(j){var team=((j.categories||{}).team||''),t=(j.text||''),dep=((j.categories||{}).department||'');
+    if(!/TX Operations/i.test(dep))return null;
+    if(/Customer Experience/i.test(team))return 'cx';
+    if(/Robot Operation|^Operations$/i.test(team))return 'ops';
     if(/Corporate|Admin|HR|Human/i.test(team))return 'corp';
-    if(team==='Field Services')return 'fs';
-    if(team==='Production / Material Management'||team==='Production & Services'){ if(/フィールド|Field/i.test(t))return 'fs'; return 'prod'; }
+    if(/Field Service/i.test(team))return 'fs';
+    if(/Production/i.test(team)){ if(/フィールド|Field/i.test(t))return 'fs'; return 'prod'; }
     return null;}
   function render(jobs){
     var groups={cx:[],ops:[],prod:[],fs:[],corp:[]};
